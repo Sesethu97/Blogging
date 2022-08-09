@@ -29,14 +29,12 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            {% if user.is_autheniticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'blog:add_post' %}">Add Post</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
               </li>
-            {% else %}
            
             
               <li class="nav-item">
@@ -45,7 +43,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
-            {% endif %}
             
           </ul>
          

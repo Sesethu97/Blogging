@@ -4,16 +4,14 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 <small>By: {{ post.author}} - {{ post.post_date}}
-    {% if user.is_autheniticated %}
-        -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
-        <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a> 
-    {% endif %}
+    -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
+    <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a> 
     </small><br/>
 <hr>
 <br/>
 
 
-{{ post.body }}
+{{ post.body|safe }}
 
 <br/><br/>
 <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
