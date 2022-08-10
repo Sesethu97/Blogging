@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.http import Http404, HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -21,6 +22,10 @@ class HomePage(ListView):
     model = Post
     template_name = "blog/home.html"
     ordering = ["-post_date"]
+
+    def Category(request, cats):
+        category_posts = Post.objects.filter(category=cats)
+        return render(request, "categories.html", {"cats": cats, "category_posts": category_posts})
 
 
 class PostPage(DetailView):
