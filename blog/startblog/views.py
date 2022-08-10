@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .forms import CreatePostForm, EditForm
 from startblog.forms import CreatePostForm
 from django.urls import reverse_lazy
-from .models import Post
+from .models import Category, Post
 
 
 class HomePage(ListView):
@@ -26,6 +26,11 @@ class AddPost(CreateView):
     form_class = CreatePostForm
     template_name = "add_post.html"
  
+class AddCategory(CreateView):
+    model = Category
+    # form_class = CreatePostForm
+    template_name = "add_category.html"
+
 class Createpost(View):
     def post(self, request: HttpRequest):
         if not request.user.is_authenticated:

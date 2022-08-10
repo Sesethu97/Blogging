@@ -3,8 +3,8 @@ from django import forms
 from .models import Post, Category
 
  
-choices =[("uncategorized", "uncategorized"),("sports", "sports"),("food&drinks", "food&drinks"),("entertainment", "entertainment"),("fashion", "fashion"),("photography&arts", "photography&arts"),("travels", "travels"),]
-# choices = Category.objects.all().values_list("name", "name")
+# choices =[("uncategorized", "uncategorized"),("sports", "sports"),("food&drinks", "food&drinks"),("entertainment", "entertainment"),("fashion", "fashion"),("photography&arts", "photography&arts"),("travels", "travels"),]
+choices = Category.objects.all().values_list("name", "name")
 
 choices_list = []
 

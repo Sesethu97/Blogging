@@ -17,6 +17,8 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse("blog:home")
 
+choices =[("uncategorized", "uncategorized"),("sports", "sports"),("food&drinks", "food&drinks"),("entertainment", "entertainment"),("fashion", "fashion"),("photography&arts", "photography&arts"),("travels", "travels")]
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=255, default="my blog")
