@@ -7,17 +7,27 @@ from datetime import datetime, date
 
 # Create your models here.
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
-    
     def get_absolute_url(self):
         return reverse("blog:home")
 
-choices =[("uncategorized", "uncategorized"),("sports", "sports"),("food&drinks", "food&drinks"),("entertainment", "entertainment"),("fashion", "fashion"),("photography&arts", "photography&arts"),("travels", "travels")]
+
+choices = [
+    ("uncategorized", "uncategorized"),
+    ("sports", "sports"),
+    ("food&drinks", "food&drinks"),
+    ("entertainment", "entertainment"),
+    ("fashion", "fashion"),
+    ("photography&arts", "photography&arts"),
+    ("travels", "travels"),
+]
+
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
@@ -29,7 +39,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title + " | " + str(self.author)
-
 
     def get_absolute_url(self):
         return reverse("blog:home")
