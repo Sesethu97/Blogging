@@ -2,7 +2,6 @@ from unicodedata import category, name
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from datetime import datetime, date
 
 
 # Create your models here.
@@ -36,6 +35,11 @@ class Post(models.Model):
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
+    # category = models.ForeignKey(
+    #     Category, 
+    #     on_delete=models.CASCADE,
+    #     default=Category.objects.get(name="uncategorized")
+    # )
 
     def __str__(self):
         return self.title + " | " + str(self.author)

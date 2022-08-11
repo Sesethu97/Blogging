@@ -23,9 +23,10 @@ class HomePage(ListView):
     template_name = "blog/home.html"
     ordering = ["-post_date"]
 
-    def Category(request, cats):
-        category_posts = Post.objects.filter(category=cats)
-        return render(request, "categories.html", {"cats": cats, "category_posts": category_posts})
+def category_post(request, cats):
+    category_post = Post.objects.filter(category=cats)
+    context = {"cats": cats, "category_post": category_post}
+    return render(request, "blog/category_post.html", context)
 
 
 class PostPage(DetailView):
@@ -43,7 +44,7 @@ class AddCategory(CreateView):
     model = Category
     # form_class = CreatePostForm
     template_name = "blog/add_category.html"
-
+    fields = "__all__" 
 
 class Createpost(View):
     def post(self, request: HttpRequest):
