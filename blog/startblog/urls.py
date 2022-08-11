@@ -9,6 +9,7 @@ from .views import (
     DeletePost,
     AddCategory,
     category_post,
+    category_list,
 )
 
 
@@ -22,4 +23,6 @@ urlpatterns = [
     path("article/edit/<int:pk>", UpdatePost.as_view(), name="update_post"),
     path("article/<int:pk>/delete", DeletePost.as_view(), name="delete_post"),
     path("category/<str:cats>", category_post, name="category_post"),
+    path("category_list/", category_list, name="category_list"),
+
 ]

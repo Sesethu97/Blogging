@@ -16,10 +16,12 @@
             - <a href="{% url 'blog:category_post' post.category|slugify %}">{{ post.category }}</a> 
             - {{ post.author }} - {{ post.post_date}}
         <small>
-            {% if user.is_authenticated %}
-
+            {% if user.is_authenticated %}  
+                {% if user.id == post.author.id %}     
+    
             -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
             <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a>
+                {% endif %}
             {% endif %}
         </small><br />
         {{ post.body|slice:":200" | safe}}

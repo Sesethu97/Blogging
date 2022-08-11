@@ -30,10 +30,10 @@ class HomePage(ListView):
         return context
 
 
-def category_list(request, cats):
-    category_menu_list =category_list Category.objects.all()
+def category_list(request):
+    category_menu_list =Category.objects.all()
 
-    context = {"cats": cats.title(), "category_list": category_menu_list}
+    context = { "category_menu_list": category_menu_list}
     return render(request, "blog/category_list.html", context)
 
 
