@@ -23,15 +23,36 @@ class HomePage(ListView):
     template_name = "blog/home.html"
     ordering = ["-post_date"]
 
+    def get_context_data(self,*args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(HomePage, self).get_context_data(*args, **kwargs)
+        context["category_menu"] = category_menu
+        return context
+
+
+def category_list(request, cats):
+    category_menu_list =category_list Category.objects.all()
+
+    context = {"cats": cats.title(), "category_list": category_menu_list}
+    return render(request, "blog/category_list.html", context)
+
+
 def category_post(request, cats):
-    category_post = Post.objects.filter(category=cats)
-    context = {"cats": cats, "category_post": category_post}
+    category_post = Post.objects.filter(category=cats.replace("-", " "))
+    context = {"cats": cats.title().replace("-", ""), "category_post": category_post}
     return render(request, "blog/category_post.html", context)
 
 
 class PostPage(DetailView):
     model = Post
     template_name = "blog/post_details.html"
+
+    def get_context_data(self,*args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(PostPage, self).get_context_data(*args, **kwargs)
+        context["category_menu"] = category_menu
+        return context
+
 
 
 class AddPost(CreateView):
@@ -46,7 +67,7 @@ class AddCategory(CreateView):
     template_name = "blog/add_category.html"
     fields = "__all__" 
 
-class Createpost(View):
+class CreatePost(View):
     def post(self, request: HttpRequest):
         if not request.user.is_authenticated:
             raise Http404("NOT LOGGED IN")
