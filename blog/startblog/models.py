@@ -2,6 +2,7 @@ from unicodedata import category, name
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -32,9 +33,13 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=255, default="my blog")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    # body = models.TextField()
+    body = RichTextField(blank=True, null=True)
+   
+
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
+    snippet = models.CharField(max_length=255, default="Click Link To Read Blog Post")
     likes = models.ManyToManyField(User, related_name="like_post")
     dislikes = models.ManyToManyField(User, related_name="dislike_post")
 
