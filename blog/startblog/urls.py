@@ -28,6 +28,4 @@ urlpatterns = [
     path("category_list/", category_list, name="category_list"),
     path("like/<int:pk>", like_view, name="like_post"),
     path("dislike/<int:pk>", dislike_view, name="dislike_post"),
-
-
 ]

@@ -2,38 +2,62 @@
 {% block title %}{{ post.title_tag}}{% endblock %}
 
 {% block content %}
-                
-    <h1>{{ post.title }} </h1>
-    <small>By: {{ post.author}} - {{ post.post_date}}
-    {% if user.is_authenticated %}  
-        {% if user.id == post.author.id %}     
 
-        -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
-        <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a> 
-    
-        {% endif %}  
-    {% endif %}    
-  
-    </small><br/>
-    <hr>
-    <br/>
+<h1>{{ post.title }} </h1>
+<small>By: {{ post.author}} - {{ post.post_date}}
+    {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+
+    -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
+    <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a>
+
+    {% endif %}
+    {% endif %}
+
+</small><br />
+<hr>
+<br />
 
 
-    {{ post.body|safe }}
-    <br/><br/>
-    <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
-    <br/><br/>
-    <hr>
-    <br/>
-    <form action="{% url 'blog:like_post' pk=post.pk %}" method="POST">
+{{ post.body|safe }}
+<br /><br />
+<a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
+<br /><br />
+<hr>
+<br />
+<form action="{% url 'blog:like_post' pk=post.pk %}" method="POST">
     {% csrf_token %}
-    <button type="submit", class="btn btn-primary btn-sm", name="post_id", value="{{ post.id }}"> Like</button> - {{ total_likes}} Likes
-    </form>
-    
-    <hr>
-    <br/>
-    <form action="{% url 'blog:dislike_post' pk=post.pk %}" method="POST">
+    {% if user.is_authenticated %}
+
+    {% if liked%}
+    <button type="submit" , class="btn btn-danger btn-sm" , name="post_id" , value="{{ post.id }}"> UnLike</button>
+    {% else %}
+    <button type="submit" , class="btn btn-primary btn-sm" , name="post_id" , value="{{ post.id }}"> Like</button>
+    {% endif %}
+    {% else %}
+    <small>Login to Like</small>
+    {% endif %}
+
+    - {{ total_likes}} like
+</form>
+
+<hr>
+<br />
+<form action="{% url 'blog:dislike_post' pk=post.pk %}" method="POST">
     {% csrf_token %}
-    <button type="submit", class="btn btn-primary btn-sm", name="post_id", value="{{ post.id }}"> Dislike</button> - {{ total_dislikes}} Dislike
-    </form>
+    {% if user.is_authenticated %}
+
+    {% if disliked %}
+
+    <button type="submit" , class="btn btn-danger btn-sm" , name="post_id" , value="{{ post.id }}"> unDislike</button>
+    {% else %}
+    <button type="submit" , class="btn btn-primary btn-sm" , name="post_id" , value="{{ post.id }}"> Dislike</button>
+
+    {% endif %}
+    {% else %}
+    <small>Login to disLike</small>
+    {% endif %}
+
+    - {{ total_dislikes}} Dislike
+</form>
 {% endblock %}

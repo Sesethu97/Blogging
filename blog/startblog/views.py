@@ -19,14 +19,32 @@ from typing import Any
 from django.http import HttpResponseRedirect
 
 
-def like_view(request, pk):
-    post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
-
 def dislike_view(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    post.dislikes.add(request.user)
+    disliked = False
+    if post.dislikes.filter(id=request.user.id).exists():
+        post.dislikes.remove(request.user)
+        disliked = False    
+    else:
+        post.dislikes.add(request.user)
+        disliked = True
+    
+    return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
+
+
+
+def like_view(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    liked = False
+
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+
+
     return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
 
 
@@ -64,13 +82,24 @@ class PostPage(DetailView):
         context = super(PostPage, self).get_context_data(*args, **kwargs)
         context["category_menu"] = category_menu
         stuff = get_object_or_404(Post, id=self.kwargs["pk"])
+        stuffs = get_object_or_404(Post, id=self.kwargs["pk"])
 
         total_likes = stuff.total_likes()
+        liked = False
+        if stuff.likes.filter(id=self.request.user.id).exists():
+            liked = True
 
-        total_dislikes = stuff.total_dislikes()
+        total_dislikes = stuffs.total_dislikes()
+        disliked = False
+        if stuffs.likes.filter(id=self.request.user.id).exists():
+            disliked = True
 
         context["total_likes"] = total_likes
+        context["liked"] = liked
+
         context["total_dislikes"] = total_dislikes
+        context["disliked"] = disliked
+
 
 
         return context
