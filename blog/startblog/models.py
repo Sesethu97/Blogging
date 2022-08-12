@@ -35,7 +35,14 @@ class Post(models.Model):
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
-    likes = models.ManyToManyField(User, related_name="blog_posts")
+    likes = models.ManyToManyField(User, related_name="like_post")
+    dislikes = models.ManyToManyField(User, related_name="dislike_post")
+
+
+    def total_dislikes(self):
+        return self.dislikes.count()
+    
+
 
     def total_likes(self):
         return self.likes.count()

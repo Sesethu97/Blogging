@@ -11,6 +11,7 @@ from .views import (
     category_post,
     category_list,
     like_view,
+    dislike_view,
 )
 
 
@@ -26,5 +27,7 @@ urlpatterns = [
     path("category/<str:cats>", category_post, name="category_post"),
     path("category_list/", category_list, name="category_list"),
     path("like/<int:pk>", like_view, name="like_post"),
+    path("dislike/<int:pk>", dislike_view, name="dislike_post"),
+
 
 ]

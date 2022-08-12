@@ -24,6 +24,11 @@ def like_view(request, pk):
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
 
+def dislike_view(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.dislikes.add(request.user)
+    return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
+
 
 class HomePage(ListView):
     model = Post
@@ -58,6 +63,16 @@ class PostPage(DetailView):
         category_menu = Category.objects.all()
         context = super(PostPage, self).get_context_data(*args, **kwargs)
         context["category_menu"] = category_menu
+        stuff = get_object_or_404(Post, id=self.kwargs["pk"])
+
+        total_likes = stuff.total_likes()
+
+        total_dislikes = stuff.total_dislikes()
+
+        context["total_likes"] = total_likes
+        context["total_dislikes"] = total_dislikes
+
+
         return context
 
 
