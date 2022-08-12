@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.urls import reverse_lazy
 
-from .forms import SignupForm
+from .forms import SignupForm, EditProfileForm
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ class UserRegisteration(generic.CreateView):
 
 
 class UserEdit(generic.UpdateView):
-    form_class = UserChangeForm
+    form_class = EditProfileForm
     template_name = "registration/edit_profile.html"
     success_url = reverse_lazy("blog:home")
 
