@@ -59,17 +59,17 @@
           <a class="nav-link" href="{% url 'blog:add_category' %}">Add Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
         </li>
 
         {% else %}
 
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
+          <a class="nav-link" href="{% url 'users:register' %}">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'users:login' %}">Login</a>
         </li>
         {% endif %}
 
