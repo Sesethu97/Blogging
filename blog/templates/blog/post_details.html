@@ -35,7 +35,7 @@
     <button type="submit" , class="btn btn-primary btn-sm" , name="post_id" , value="{{ post.id }}"> Like</button>
     {% endif %}
     {% else %}
-    <small>Login to Like</small>
+    <small><a href="{% url 'users:login' %}">Login to Like</small></a>
     {% endif %}
 
     - {{ total_likes}} like
@@ -55,7 +55,7 @@
 
     {% endif %}
     {% else %}
-    <small>Login to disLike</small>
+    <small><a href="{% url 'users:login' %}">Login to Dislike</small></a>
     {% endif %}
 
     - {{ total_dislikes}} Dislike
