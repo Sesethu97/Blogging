@@ -13,9 +13,16 @@ from django.views.generic import (
 )
 from .forms import CreatePostForm, EditForm
 from startblog.forms import CreatePostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Category, Post
 from typing import Any
+from django.http import HttpResponseRedirect
+
+
+def like_view(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post_details', args=[str(pk)]))
 
 
 class HomePage(ListView):

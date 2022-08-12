@@ -10,6 +10,7 @@ from .views import (
     AddCategory,
     category_post,
     category_list,
+    like_view,
 )
 
 
@@ -24,5 +25,6 @@ urlpatterns = [
     path("article/<int:pk>/delete", DeletePost.as_view(), name="delete_post"),
     path("category/<str:cats>", category_post, name="category_post"),
     path("category_list/", category_list, name="category_list"),
+    path("like/<int:pk>", like_view, name="like_post"),
 
 ]

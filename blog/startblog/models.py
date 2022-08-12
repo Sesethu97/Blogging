@@ -35,11 +35,7 @@ class Post(models.Model):
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
-    # category = models.ForeignKey(
-    #     Category, 
-    #     on_delete=models.CASCADE,
-    #     default=Category.objects.get(name="uncategorized")
-    # )
+    likes = models.ManyToManyField(User, related_name="blog_posts")
 
     def __str__(self):
         return self.title + " | " + str(self.author)
