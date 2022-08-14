@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{%load static %}
 {% block title %}{{ post.title_tag}}{% endblock %}
 
 {% block content %}
@@ -61,4 +62,57 @@
 
     - {{ total_dislikes}} Dislike
 </form>
+<br /><br />
+
+<div class="card-mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+        {% if post.author.profile.profile_picture %}
+            <img" src="{{ post.author.profile.profile_picture.url}}" class="card-img" width="100%" height="100%" />
+        
+        {% else %}
+        <img" src="{% static 'startblog/images/download.png' %}" class="card-img" width="100%" height="100%" />
+
+        {% endif %}
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <h5 class="card-title"> {{ post.author.name}}</h5>
+                <p class="small text-muted">
+                    <!-- {% if post.author.profile.website_url%}
+                        <a href="post.author.profile.website_url">Website | </a>
+                    
+                    {% endif %} -->
+                    {% if post.author.profile.facebook_url%}
+
+                        <a href="post.author.profile.facebook_url">Facebook | </a>
+                    {% endif %}
+                    {% if post.author.profile.twitter_url%}
+
+                        <a href="post.author.profile.twitter_url">Twitter | </a>
+                    {% endif %}
+                    {% if post.author.profile.instagram_url%}
+
+                        <a href="post.author.profile.instagram_url">Instagram | </a>
+                    {% endif %}
+                    {% if post.author.profile.pinterest_url%}
+
+                        <a href="post.author.profile.pinterest_url">Pinterest </a>
+                    {% endif %}
+                <p class="card-text"> {{post.author.profile_picture}} </p>
+                <p class="small text-muted">{{ post.author.profile.bio}}</p>
+                </p>
+                <p class="card-text text-muted">{{ post.author.profile.bio}}</p>
+                <p class="card-text"><small class="text-muted">last uploaded xx mins ago</small></p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
 {% endblock %}

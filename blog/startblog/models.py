@@ -31,9 +31,22 @@ choices = [
 ]
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="image/profile/")
+    # website_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    pinterest_url = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    header_image = models.ImageField(null=True, blank=True, upload_to="*image/")
+    header_image = models.ImageField(null=True, blank=True, upload_to="image/")
     title_tag = models.CharField(max_length=255, default="my blog")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # body = models.TextField()
