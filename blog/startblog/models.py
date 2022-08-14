@@ -1,3 +1,5 @@
+from distutils.command import upload
+from email.mime import image
 from unicodedata import category, name
 from django.db import models
 from django.contrib.auth.models import User
@@ -31,6 +33,7 @@ choices = [
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    header_image = models.ImageField(null=True, blank=True, upload_to="*image/")
     title_tag = models.CharField(max_length=255, default="my blog")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # body = models.TextField()

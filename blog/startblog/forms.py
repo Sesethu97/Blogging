@@ -23,6 +23,8 @@ class CreatePostForm(forms.ModelForm):
             "category",
             "body",
             "snippet",
+            "header_image"
+
         )
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
@@ -47,8 +49,9 @@ class EditForm(forms.ModelForm):
             "title_tag",
             "body",
             "snippet",
-
         )
+
+
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "title_tag": forms.TextInput(attrs={"class": "form-control"}),
