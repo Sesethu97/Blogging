@@ -1,14 +1,21 @@
 from distutils.command import upload
 from email.mime import image
 from unicodedata import category, name
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 
-# Create your models here.
 
+class User(AbstractUser):
+    bio = models.TextField()
+    profile_picture = models.ImageField(null=True, blank=True, upload_to="image/profile/")
+    # website_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    pinterest_url = models.CharField(max_length=255, null=True, blank=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -32,7 +39,7 @@ choices = [
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name="user")
     bio = models.TextField()
     profile_picture = models.ImageField(null=True, blank=True, upload_to="image/profile/")
     # website_url = models.CharField(max_length=255, null=True, blank=True)
