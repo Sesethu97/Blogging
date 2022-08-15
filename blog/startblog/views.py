@@ -79,8 +79,8 @@ class PostPage(DetailView):
         category_menu = Category.objects.all()
         context = super(PostPage, self).get_context_data(*args, **kwargs)
         context["category_menu"] = category_menu
-        stuff = get_object_or_404(Post, id=self.kwargs["pk"])
-        stuffs = get_object_or_404(Post, id=self.kwargs["pk"])
+        # stuff = get_object_or_404(Post, id=self.kwargs["pk"])
+        # stuffs = get_object_or_404(Post, id=self.kwargs["pk"])
 
         # total_likes = stuff.total_likes()
         # liked = False

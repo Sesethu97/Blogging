@@ -70,10 +70,10 @@ class EditProfileForm(UserChangeForm):
             "last_name",
             "email",
             "password",
-            "facebook_url",
-            "twitter_url",
-            "instagram_url", 
-            "pinterest_url",
+            # "facebook_url",
+            # "twitter_url",
+            # "instagram_url", 
+            # "pinterest_url",
           
         ]
 

@@ -69,8 +69,6 @@ class Migration(migrations.Migration):
                 ('category', models.CharField(default='uncategorized', max_length=255)),
                 ('snippet', models.CharField(default='Click Link To Read Blog Post', max_length=255)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('dislikes', models.ManyToManyField(related_name='dislike_post', to=settings.AUTH_USER_MODEL)),
-                ('likes', models.ManyToManyField(related_name='like_post', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

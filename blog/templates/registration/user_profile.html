@@ -13,7 +13,7 @@
     <div class="row no-gutters">
         <div class="col-md-2">
         {% if page_user.profile_picture %}
-            <img" src="{{ page_user.profile_picture.url}}" class="card-img" width="100%" height="100%" />
+            <img" src="{{ page_user.profile_picture.url }}" class="card-img" width="100%" height="100%" />
         
         {% else %}
         <img" src="{% static 'startblog/images/download.png' %}" class="card-img" width="100%" height="100%" />
@@ -25,10 +25,10 @@
                 <h5 class="card-title"> {{ post.author.name}}</h5>
                 <p class="small text-muted">
                     <a href="{% url 'users:show_profile' page_user.id %}">Profile page</a>
-                    <!-- {% if page_user.website_url%}
+                    {% if page_user.website_url%}
                         <a href="page_user.website_url">Website | </a>
                     
-                    {% endif %} -->
+                    {% endif %}
                     {% if page_user.facebook_url%}
 
                         <a target="_blank"  href="page_user.facebook_url">Facebook | </a>

@@ -60,6 +60,8 @@ class Post(models.Model):
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
     snippet = models.CharField(max_length=255, default="Click Link To Read Blog Post")
+    # likes = models.IntegerField(default=0, blank=True)
+    # has_voted = models .BooleanField(default=False)
     # likes = models.ManyToManyField(User, null=True, blank=False, related_name="like_post")
     # dislikes = models.ManyToManyField(User, null=True, blank=False,  related_name="dislike_post")
 
