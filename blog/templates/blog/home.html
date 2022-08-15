@@ -12,16 +12,16 @@
 <ul>
     {% for post in object_list %}
     <li><a href="{% url 'blog:post_details' pk=post.pk %}">
-            {{ post.title }}</a> 
-            - <a href="{% url 'blog:category_post' post.category|slugify %}">{{ post.category }}</a> 
-            - {{ post.author }} - {{ post.post_date}}
+            {{ post.title }}</a>
+        - <a href="{% url 'blog:category_post' post.category|slugify %}">{{ post.category }}</a>
+        - {{ post.author }} - {{ post.post_date}}
         <small>
-            {% if user.is_authenticated %}  
-                {% if user.id == post.author.id %}     
-    
+            {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+
             -<a href="{% url 'blog:update_post' pk=post.pk %}">Edit</a>
             <a href="{% url 'blog:delete_post' pk=post.pk %}">Delete</a>
-                {% endif %}
+            {% endif %}
             {% endif %}
         </small><br />
         {{ post.snippet }}

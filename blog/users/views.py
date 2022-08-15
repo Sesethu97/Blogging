@@ -1,38 +1,30 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.views.generic import DetailView
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm,PasswordChangeForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from .forms import SignupForm, EditProfileForm, PasswordChangedForm
-from startblog.models import Profile
+from startblog.models import User
 
-# Create your views here.
 
 class ShowProfilePageView(DetailView):
-    model = Profile
-    template_name = "registration:user_profile.html"
+    model = User
+    template_name = "registration/user_profile.html"
 
-
-    def get_context_data(self,*args, **kwargs):
-        # users = Profile.objects.all()
+    def get_context_data(self, *args, **kwargs):
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
-        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        page_user = get_object_or_404(User, id=self.kwargs["pk"])
         context["page_user"] = page_user
         return context
 
 
 class PasswordChangeView(PasswordChangeView):
     form_class = PasswordChangedForm
-
-    # form_class = PasswordChangeForm
     success_url = reverse_lazy("users:password_success")
 
-    # success_url = reverse_lazy("blog:home")
 
 def password_success(request):
-    return render(request,"registration/password_success.html", {})
-
+    return render(request, "registration/password_success.html", {})
 
 
 class UserRegisteration(generic.CreateView):

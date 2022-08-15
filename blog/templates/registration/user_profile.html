@@ -31,21 +31,21 @@
                     {% endif %} -->
                     {% if page_user.facebook_url%}
 
-                        <a href="page_user.facebook_url">Facebook | </a>
+                        <a target="_blank"  href="page_user.facebook_url">Facebook | </a>
                     {% endif %}
                     {% if page_user.twitter_url%}
 
-                        <a href="page_user.twitter_url">Twitter | </a>
+                        <a target="_blank" href="page_user.twitter_url">Twitter | </a>
                     {% endif %}
                     {% if page_user.instagram_url%}
 
-                        <a href="page_user.instagram_url">Instagram | </a>
+                        <a target="_blank" href="page_user.instagram_url">Instagram | </a>
                     {% endif %}
                     {% if page_user.pinterest_url%}
 
-                        <a href="page_user.pinterest_url">Pinterest </a>
+                        <a target="_blank"  href="page_user.pinterest_url">Pinterest </a>
                     {% endif %}
-                <p class="card-text"> {{page_user_picture}} </p>
+                <img src="{{page_user.profile_picture.url}}" class="card-text" />
                 <p class="small text-muted">{{ page_user.bio}}</p>
                 </p>
                 <p class="card-text text-muted">{{ page_user.bio}}</p>
