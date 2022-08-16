@@ -3,14 +3,19 @@ from django.views import generic
 from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
-from .forms import SignupForm, EditProfileForm, PasswordChangedForm
+from .forms import SignupForm, EditProfileForm, PasswordChangedForm, ProfilePageForm
 from startblog.models import User
 
 
 class CreateNewProfileView(CreateView):
     model = User
-    template_name = "registerations/create_profile.html"
+    form_class= ProfilePageForm
+    template_name = "registration/create_profile.html"
+    # fields = "__all__"
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class EditProfilePage(generic.UpdateView):
     model = User

@@ -6,6 +6,22 @@ from django.contrib.auth.forms import (
 from startblog.models import User
 from django import forms
 
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["bio", "profile_picture", "website_url", "facebook_url", "twitter_url", "instagram_url", "pinterest_url" ]
+
+        widgets = {
+                "bio": forms.Textarea(attrs={"class": "form-control"}),
+                # "profile_picture": forms.TextInput(attrs={"class": "form-control"}),
+                "website_url": forms.TextInput(attrs={"class": "form-control"}),
+                "facebook_url": forms.TextInput(attrs={"class": "form-control"}),
+                "twitter_url": forms.TextInput(attrs={"class": "form-control"}),
+                "instagram_url": forms.TextInput(attrs={"class": "form-control"}),
+                "pinterest_url": forms.TextInput(attrs={"class": "form-control"}),
+
+            }
+
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={"class": "form-control"}))

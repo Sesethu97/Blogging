@@ -15,6 +15,12 @@ class User(AbstractUser):
     instagram_url = models.URLField(max_length=255, null=True, blank=True)
     pinterest_url = models.URLField(max_length=255, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("blog:home")
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
