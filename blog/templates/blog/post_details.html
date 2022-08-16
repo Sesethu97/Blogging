@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>{{ post.title }} </h1>
-<small>By: {{ post.author}} - {{ post.post_date}}
+<small>By: {{ post.author.first_name}} {{ post.author.last_name}}  - {{ post.post_date}}
     {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
 
@@ -77,13 +77,13 @@
         </div>
         <div class="col-md-10">
             <div class="card-body">
-                <h5 class="card-title"> {{ post.author.name}}</h5>
+                <h5 class="card-title"> {{ post.author.first_name}} {{ post.author.last_name}}</h5>
                 <p class="small text-muted">
                     <a href="{% url 'users:show_profile' post.author.id %}">page</a>
-                    <!-- {% if post.author.website_url%}
+                    {% if post.author.website_url%}
                         <a href="post.author.website_url">Website | </a>
                     
-                    {% endif %} -->
+                    {% endif %}
                     {% if post.author.facebook_url%}
 
                     <a target="_blank" href="{{post.author.facebook_url}}">Facebook | </a>
