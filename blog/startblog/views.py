@@ -11,39 +11,14 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+from django.contrib.auth.decorators import login_required
 from .forms import CreatePostForm, EditForm
 from startblog.forms import CreatePostForm
 from django.urls import reverse_lazy, reverse
-from .models import Category, Post
+from .models import Category, Post, Vote
 from typing import Any
 from django.http import HttpResponseRedirect
-
-
-# def dislike_view(request, pk):
-#     post = get_object_or_404(Post, id=request.POST.get("post_id"))
-#     disliked = False
-#     if post.dislikes.filter(id=request.user.id).exists():
-#         post.dislikes.remove(request.user)
-#         disliked = False
-#     else:
-#         post.dislikes.add(request.user)
-#         disliked = True
-
-#     return HttpResponseRedirect(reverse("blog:post_details", args=[str(pk)]))
-
-
-# def like_view(request, pk):
-#     post = get_object_or_404(Post, id=request.POST.get("post_id"))
-#     liked = False
-
-#     if post.likes.filter(id=request.user.id).exists():
-#         post.likes.remove(request.user)
-#         liked = False
-#     else:
-#         post.likes.add(request.user)
-#         liked = True
-
-#     return HttpResponseRedirect(reverse("blog:post_details", args=[str(pk)]))
+from utils.helpers import check_has_user_voted, cast_vote
 
 
 class HomePage(ListView):
@@ -79,25 +54,6 @@ class PostPage(DetailView):
         category_menu = Category.objects.all()
         context = super(PostPage, self).get_context_data(*args, **kwargs)
         context["category_menu"] = category_menu
-        # stuff = get_object_or_404(Post, id=self.kwargs["pk"])
-        # stuffs = get_object_or_404(Post, id=self.kwargs["pk"])
-
-        # total_likes = stuff.total_likes()
-        # liked = False
-        # if stuff.likes.filter(id=self.request.user.id).exists():
-        #     liked = True
-
-        # total_dislikes = stuffs.total_dislikes()
-        # disliked = False
-        # if stuffs.likes.filter(id=self.request.user.id).exists():
-        #     disliked = True
-
-        # context["total_likes"] = total_likes
-        # context["liked"] = liked
-
-        # context["total_dislikes"] = total_dislikes
-        # context["disliked"] = disliked
-
         return context
 
 
@@ -114,6 +70,65 @@ class AddCategory(CreateView):
     fields = "__all__"
 
 
+@login_required
+def create_post(request: HttpRequest):
+    if not request.method == "POST":
+        post_form = CreatePostForm()
+    else:
+        post_form = CreatePostForm(request.POST, request.FILES)
+
+        if not post_form.is_valid():
+            messages.error(request, "Post creation failed")
+        else:
+            post_form = post_form.save(commit=False)
+            post_form.author = request.user
+            post_form.save()
+            return redirect("/")
+    context = {
+        "form": post_form,
+    }
+    return render(request, "blog/add_post.html", context)
+
+    # new_post = Post.objects.last()
+    # return redirect("blog:post_details", pk=new_post.id)
+
+
+def user_cast_vote(request, pk, vote_value):
+    """
+    Creates new `Vote` object associated with request.user + `Link.objects.get(object_id=object_id)`
+    """
+    if not request.user.is_authenticated:
+        data = {
+            "status_code": 401,
+            "message": "You need be logged in to perform this action",
+        }
+        return HttpResponse(data)
+    else:
+        post = get_object_or_404(Post, pk=pk)
+
+        try:
+            vote_value = int(vote_value)
+        except:
+            vote_value = 0
+
+        has_user_voted = check_has_user_voted(Vote, request.user, post)
+
+        if has_user_voted == True:
+            vote = Vote.objects.get(user=request.user, post=post)
+            if vote.value == -1 or vote.value == 1:
+                cast_vote(post=post, vote_value=0, vote=vote)
+            elif vote.value == 0:
+                cast_vote(post=post, vote_value=vote_value, vote=vote)
+
+            return HttpResponse(
+                {"score": post.score, "has_voted": True, "value": vote.value}
+            )
+        elif has_user_voted == False:
+            vote = Vote.objects.create(user=request.user, post=post)
+            cast_vote(post=post, vote_value=vote_value, vote=vote)
+            return HttpResponse({"score": post.score, "has_voted": True})
+
+
 class CreatePost(View):
     def post(self, request: HttpRequest):
         if not request.user.is_authenticated:
@@ -125,8 +140,9 @@ class CreatePost(View):
             form.author = request.user
             form.save()
 
-        new_post = Post.objects.last()
-        return redirect("blog:post_details", pk=new_post.id)
+        # new_post = Post.objects.last()
+        # return redirect("blog:post_details", pk=new_post.id)
+        return HttpResponse("sdfghujhygtfrderftgyhu")
 
     def get(self, request: HttpRequest):
         form = CreatePostForm()

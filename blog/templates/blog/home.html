@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load humanize %}
+
 {% block content %}
 
 {% if messages %}
@@ -25,6 +27,7 @@
             {% endif %}
         </small><br />
         {{ post.snippet }}
+        <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>
     </li>
     {% endfor %}
 </ul>

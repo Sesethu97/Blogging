@@ -25,6 +25,10 @@
 <br /><br />
 <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
 <br /><br />
+
+<a class="btn btn-primary btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=1 %}">LIke</a>
+<a class="btn btn-danger btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=-1 %}">dislike</a>
+
 <hr>
 <br />
 {% comment %}<form action="{% url 'blog:like_post' pk=post.pk %}" method="POST">
@@ -42,6 +46,7 @@
 
     - {{ total_likes}} like
 </form>
+
 
 <hr>
 <br />

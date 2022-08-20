@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 
 
 
 <h1>User profile</h1>
-<br/>
-<!-- {{ page_user }} -->
+<br />
+{{ page_user }}
 
 
 <div class="card-mb-3">
     <div class="row no-gutters">
         <div class="col-md-2">
-        {% if page_user.profile_picture %}
-            <img" src="{{ page_user.profile_picture.url }}" class="card-img" width="100%" height="100%" />
-        
-        {% else %}
-        <img" src="{% static 'startblog/images/download.png' %}" class="card-img" width="100%" height="100%" />
+            {% if page_user.profile_picture %}
+            <img src="{{ page_user.profile_picture.url }}" class="card-img" width="100%" height="100%" />
 
-        {% endif %}
+            {% else %}
+            <img src="{% static 'startblog/images/download.jpg' %}" class="card-img" width="100%" height="100%" />
+
+            {% endif %}
         </div>
         <div class="col-md-10">
             <div class="card-body">
@@ -26,31 +27,32 @@
                 <p class="small text-muted">
                     <a href="{% url 'users:show_profile' page_user.id %}">Profile page</a>
                     {% if page_user.website_url%}
-                        <a href="page_user.website_url">Website | </a>
-                    
+                    <a href="page_user.website_url">Website | </a>
+
                     {% endif %}
                     {% if page_user.facebook_url%}
 
-                        <a target="_blank"  href="page_user.facebook_url">Facebook | </a>
+                    <a target="_blank" href="page_user.facebook_url">Facebook | </a>
                     {% endif %}
                     {% if page_user.twitter_url%}
 
-                        <a target="_blank" href="page_user.twitter_url">Twitter | </a>
+                    <a target="_blank" href="{{page_user.twitter_url}}">Twitter | </a>
                     {% endif %}
                     {% if page_user.instagram_url%}
 
-                        <a target="_blank" href="page_user.instagram_url">Instagram | </a>
+                    <a target="_blank" href="{{page_user.instagram_url}}">Instagram | </a>
                     {% endif %}
                     {% if page_user.pinterest_url%}
 
-                        <a target="_blank"  href="page_user.pinterest_url">Pinterest </a>
+                    <a target="_blank" href="{{page_user.pinterest_url}}">Pinterest </a>
                     {% endif %}
-                <img src="{{page_user.profile_picture.url}}" class="card-text" />
-                <p class="small text-muted">{{ page_user.bio}}</p>
-                </p>
-                <p class="card-text text-muted">{{ page_user.bio}}</p>
-                <p class="card-text"><small class="text-muted">last uploaded xx mins ago</small></p>
+                    {% comment %}<img src="{{page_user.profile_picture.url}}" class="card-text" />{% endcomment %}
 
+
+                <p class="small text-muted">{{ page_user.bio}}</p>
+                <p class="card-text text-muted">{{ page_user.bio}}</p>
+                
+                </p>
             </div>
 
 

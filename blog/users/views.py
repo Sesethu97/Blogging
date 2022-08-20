@@ -9,7 +9,7 @@ from startblog.models import User
 
 class CreateNewProfileView(CreateView):
     model = User
-    form_class= ProfilePageForm
+    form_class = ProfilePageForm
     template_name = "registration/create_profile.html"
     # fields = "__all__"
 
@@ -17,12 +17,20 @@ class CreateNewProfileView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class EditProfilePage(generic.UpdateView):
     model = User
     template_name = "registration/edit_profile_info.html"
-    fields = ["bio", "profile_picture", "website_url", "facebook_url", "twitter_url", "instagram_url", "pinterest_url" ]
+    fields = [
+        "bio",
+        "profile_picture",
+        "website_url",
+        "facebook_url",
+        "twitter_url",
+        "instagram_url",
+        "pinterest_url",
+    ]
     success_url = reverse_lazy("blog:home")
-
 
 
 class ShowProfilePageView(DetailView):
