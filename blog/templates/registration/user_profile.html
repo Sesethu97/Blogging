@@ -7,7 +7,7 @@
 
 <h1>User profile</h1>
 <br />
-{{ page_user }}
+<!-- {{ page_user }} -->
 
 
 <div class="card-mb-3">
@@ -23,9 +23,9 @@
         </div>
         <div class="col-md-10">
             <div class="card-body">
-                <h5 class="card-title"> {{ post.author.first_name}} {{ post.author.last_name}}</h5>
                 <p class="small text-muted">
-                    <a href="{% url 'users:show_profile' page_user.id %}">Profile page</a>
+                    <h5 class="card-title">{{ page_user }} </a>
+
                     {% if page_user.website_url%}
                     <a href="page_user.website_url">Website | </a>
 
@@ -49,7 +49,6 @@
                     {% comment %}<img src="{{page_user.profile_picture.url}}" class="card-text" />{% endcomment %}
 
 
-                <p class="small text-muted">{{ page_user.bio}}</p>
                 <p class="card-text text-muted">{{ page_user.bio}}</p>
                 
                 </p>
