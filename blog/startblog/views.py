@@ -140,9 +140,9 @@ class CreatePost(View):
             form.author = request.user
             form.save()
 
-        # new_post = Post.objects.last()
-        # return redirect("blog:post_details", pk=new_post.id)
-        return HttpResponse("sdfghujhygtfrderftgyhu")
+        new_post = Post.objects.last()
+        return redirect("blog:post_details", pk=new_post.id)
+        # return HttpResponse("sdfghujhygtfrderftgyhu")
 
     def get(self, request: HttpRequest):
         form = CreatePostForm()

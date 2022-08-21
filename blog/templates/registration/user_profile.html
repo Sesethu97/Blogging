@@ -2,37 +2,28 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-<style>
 
 
-
-
-</style>
 
 <h1>User profile</h1>
 <br />
-<!-- {{ page_user }} -->
 
 
 <div class="card-mb-3">
     <div class="row no-gutters">
         <div class="col-md-2">
             {% if page_user.profile_picture %}
-            <!-- <img src="{{ post.author.profile_picture.url }}" class="card-img"  /> -->
-
-            <p style="background-image: '{{ page_user.profile_picture.url }}'" class="card-img";>
+            <img src="{{ page_user.profile_picture.url }}" class="card-img" />
 
             {% else %}
-            <!-- <img src="{% static 'startblog/images/download.png' %}" class="card-img"  /> -->
-
-            <p style='background-image: "{% static 'startblog/images/download.jpg' %}"'  class="card-img"  ;>
-
+            <img src="{% static 'startblog/images/download.png' %}" class="card-img" />
             {% endif %}
         </div>
         <div class="col-md-10">
             <div class="card-body">
                 <p class="small text-muted">
-                    <h5 class="card-title">{{ page_user }} </a>
+                    <h5 class="card-title"> {{ page_user.first_name }} {{ page_user.last_name }}
+                    </h5>
 
                     {% if page_user.website_url%}
                     <a href="page_user.website_url">Website | </a>
@@ -58,8 +49,6 @@
 
 
                 <p class="card-text text-muted">{{ page_user.bio}}</p>
-                <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>
-
                 
                 </p>
             </div>

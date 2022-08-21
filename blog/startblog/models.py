@@ -8,7 +8,7 @@ from ckeditor.fields import RichTextField
 class User(AbstractUser):
     bio = models.TextField()
     profile_picture = models.ImageField(
-        null=True, blank=True, upload_to="image/profile/"
+        null=True, blank=True, upload_to="images/profile/"
     )
     website_url = models.URLField(max_length=255, null=True, blank=True)
     facebook_url = models.URLField(max_length=255, null=True, blank=True)
@@ -44,23 +44,9 @@ choices = [
 ]
 
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name="user")
-#     bio = models.TextField()
-#     profile_picture = models.ImageField(null=True, blank=True, upload_to="image/profile/")
-#     # website_url = models.CharField(max_length=255, null=True, blank=True)
-#     facebook_url = models.CharField(max_length=255, null=True, blank=True)
-#     twitter_url = models.CharField(max_length=255, null=True, blank=True)
-#     instagram_url = models.CharField(max_length=255, null=True, blank=True)
-#     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
-
-#     def __str__(self):
-#         return str(self.user)
-
-
 class Post(models.Model):
     title: str = models.CharField(max_length=255)
-    header_image = models.ImageField(null=True, blank=True, upload_to="image/")
+    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
     title_tag: str = models.CharField(max_length=255, default="my blog")
     author: str = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.DO_NOTHING

@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {% load humanize %}
 
-{%load static %}
+{% load static %}
 {% block title %}{{ post.title_tag}}{% endblock %}
 
 {% block content %}
-<style>
 
-    .card-img {
-        width: 70%;
-        border-radius: 50%;
-    }
+<style>
+    .card-img{
+    border-radius: 50%;
+}
 </style>
 
 <h1>{{ post.title }} </h1>
@@ -27,8 +26,10 @@
 </small><br />
 <hr>
 <br />
-{% if post.header_image%}
-<img src="{{ post.header_image.url}}"><br /><br />
+{% comment %}{{ post.header_image.url }}{% endcomment %}
+
+{% if post.header_image %}
+<img src="{{ post.header_image.url }}"><br /><br />
 {% endif %}
 {{ post.body|safe }}
 <br /><br />
@@ -91,10 +92,9 @@
         </div>
         <div class="col-md-10">
             <div class="card-body">
+                <h5 class="card-title"> 
+                    <a href="{% url 'users:show_profile' post.author.id %}">{{ post.author.first_name}} {{ post.author.last_name}}</a></h5>
                 <p class="small text-muted">
-                    <h5 class="card-title">
-                    <a href="{% url 'users:show_profile' post.author.id %}"> {{ post.author.first_name}} </h5></a>
-
                     {% if post.author.website_url%}
                         <a href="post.author.website_url">Website | </a>
                     
@@ -115,9 +115,10 @@
 
                     <a target="_blank" href="{{post.author.pinterest_url}}">Pinterest </a>
                     {% endif %}
-               
+                
                 <p class="card-text text-muted">{{ post.author.bio}}</p>
-                <p class="card-text"><small class="text-muted" >last updated {{post.post_time|naturaltime}}</small></p>
+                <p class="card-text"><small class="text-muted">last updateed: {{post.post_time|naturaltime}}</small></p>
+
 
             </div>
 
