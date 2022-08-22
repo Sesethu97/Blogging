@@ -57,10 +57,10 @@ class PostPage(DetailView):
         return context
 
 
-class AddPost(CreateView):
-    model = Post
-    form_class = CreatePostForm
-    template_name = "blog/add_post.html"
+# class AddPost(CreateView):
+#     model = Post
+#     form_class = CreatePostForm
+#     template_name = "blog/add_post.html"
 
 
 class AddCategory(CreateView):
@@ -78,10 +78,13 @@ def create_post(request: HttpRequest):
     else:
         post_form = CreatePostForm(request.POST, request.FILES)
 
+
         if not post_form.is_valid():
             messages.error(request, "Post creation failed")
         else:
             post_form = post_form.save(commit=False)
+            print(post_form)
+
             post_form.author = request.user
             post_form.save()
             

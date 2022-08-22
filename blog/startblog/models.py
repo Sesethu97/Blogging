@@ -1,3 +1,4 @@
+from contextlib import nullcontext
 from curses.ascii import NUL
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -33,20 +34,10 @@ class Category(models.Model):
         return reverse("blog:home")
 
 
-choices = [
-    ("uncategorized", "uncategorized"),
-    ("sports", "sports"),
-    ("food&drinks", "food&drinks"),
-    ("entertainment", "entertainment"),
-    ("fashion", "fashion"),
-    ("photography&arts", "photography&arts"),
-    ("travels", "travels"),
-]
-
 
 class Post(models.Model):
     title: str = models.CharField(max_length=255)
-    header_image = models.ImageField(null=True, blank= True,upload_to="photo/")
+    header_image = models.ImageField(upload_to="photo/", null=True, blank=True)
     title_tag: str = models.CharField(max_length=255, default="my blog")
     author: str = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.DO_NOTHING

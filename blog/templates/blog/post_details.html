@@ -29,9 +29,11 @@
 <br />
 
 {% if post.header_image %}
-<img src="{{ post.header_image.url }}"><br /><br />
+<img src="{{ post.header_image.url }}" />
 {% endif %}
-{{ post.body|safe }}
+<div class="w-screen">
+<p class="break-normal">{{ post.body|safe }}</p>
+</div>
 <br /><br />
 <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
 <br /><br />

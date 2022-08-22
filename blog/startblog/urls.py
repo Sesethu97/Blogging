@@ -1,6 +1,5 @@
 from django.urls import path
 
-# from . import views
 from .views import (
     CreatePost,
     HomePage,
@@ -11,9 +10,7 @@ from .views import (
     category_post,
     create_post,
     category_list,
-    # like_view,
     user_cast_vote,
-    # dislike_view,
 )
 
 
