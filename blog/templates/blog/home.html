@@ -10,13 +10,17 @@
 {% endif %}
 
 
-<h1>Post</h1>
+<h1>Latest Blogs...</h1>
 <ul>
     {% for post in object_list %}
     <li><a href="{% url 'blog:post_details' pk=post.pk %}">
             {{ post.title }}</a> 
             - <a href="{% url 'blog:category_post' post.category|slugify %}">{{ post.category }}</a> 
-            - {{ post.author.first_name}} {{ post.author.last_name}}- {{ post.post_date}}
+            - {{ post.author.first_name}} {{ post.author.last_name}}- {{ post.post_date}}<br/>
+            {% if post.header_image %}
+            <img src="{{ post.header_image.url }}"><br/><br/>
+                {% endif %}
+            
         <small>
             {% if user.is_authenticated %}  
                 {% if user.id == post.author.id %}     
@@ -26,7 +30,6 @@
                 {% endif %}
             {% endif %}
         </small><br />
-        {{ post.snippet }}
         <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>
     </li>
     {% endfor %}

@@ -13,6 +13,7 @@
 </style>
 
 <h1>{{ post.title }} </h1>
+
 <small>By: {{ post.author.first_name}} {{ post.author.last_name}}  - {{ post.post_date}}
     {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
@@ -26,7 +27,6 @@
 </small><br />
 <hr>
 <br />
-{% comment %}{{ post.header_image.url }}{% endcomment %}
 
 {% if post.header_image %}
 <img src="{{ post.header_image.url }}"><br /><br />

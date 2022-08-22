@@ -65,9 +65,10 @@ class AddPost(CreateView):
 
 class AddCategory(CreateView):
     model = Category
-    # form_class = CreatePostForm
     template_name = "blog/add_category.html"
     fields = "__all__"
+
+
 
 
 @login_required
@@ -83,7 +84,10 @@ def create_post(request: HttpRequest):
             post_form = post_form.save(commit=False)
             post_form.author = request.user
             post_form.save()
-            return redirect("/")
+            
+            new_post = Post.objects.last()
+            return redirect("blog:post_details", pk=new_post.id)
+            # return redirect("/")
     context = {
         "form": post_form,
     }

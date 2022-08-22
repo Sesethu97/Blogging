@@ -46,7 +46,7 @@ choices = [
 
 class Post(models.Model):
     title: str = models.CharField(max_length=255)
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    header_image = models.ImageField(null=True, blank= True,upload_to="photo/")
     title_tag: str = models.CharField(max_length=255, default="my blog")
     author: str = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.DO_NOTHING
@@ -60,16 +60,7 @@ class Post(models.Model):
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
-    # post_time = models.DateTimeField(auto_now_add=True)
-    # likes = models.IntegerField(default=0, blank=True)
-    # likes = models.ManyToManyField(User, null=True, blank=False, related_name="like_post")
-    # dislikes = models.ManyToManyField(User, null=True, blank=False,  related_name="dislike_post")
-
-    # def total_dislikes(self):
-    #     return self.dislikes.count()
-
-    # def total_likes(self):
-    #     return self.likes.count()
+ 
 
     def __str__(self):
         return self.title + " | " + str(self.author)

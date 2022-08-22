@@ -29,6 +29,5 @@ urlpatterns = [
     path("category/<str:cats>", category_post, name="category_post"),
     path("category_list/", category_list, name="category_list"),
     path("vote/<pk>/<vote_value>", user_cast_vote, name="cast_vote"),
-    # path("like/<int:pk>", like_view, name="like_post"),
-    # path("dislike/<int:pk>", dislike_view, name="dislike_post"),
+  
 ]
