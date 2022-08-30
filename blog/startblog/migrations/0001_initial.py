@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('header_image', models.ImageField(blank=True, null=True, upload_to='image/')),
                 ('title_tag', models.CharField(default='my blog', max_length=255)),
-                ('body', ckeditor.fields.RichTextField(blank=True, null=True)),
+                ('body', models.CharField(blank=True, null=True)),
                 ('post_date', models.DateField(auto_now_add=True)),
                 ('category', models.CharField(default='uncategorized', max_length=255)),
                 ('snippet', models.CharField(default='Click Link To Read Blog Post', max_length=255)),

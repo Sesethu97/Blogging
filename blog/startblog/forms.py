@@ -18,18 +18,16 @@ class CreatePostForm(forms.ModelForm):
         model = Post
         fields = (
             "title",
-            "title_tag",
             "category",
-            "body",
+            "caption",
             "header_image",
         )
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
-            "title_tag": forms.TextInput(attrs={"class": "form-control"}),
             "category": forms.Select(
                 choices=choices_list, attrs={"class": "form-control"}
             ),
-            "body": forms.Textarea(attrs={"class": "form-control"}),
+            "caption": forms.Textarea(attrs={"class": "form-control"}),
         }
 
 
@@ -38,13 +36,10 @@ class EditForm(forms.ModelForm):
         model = Post
         fields = (
             "title",
-            "title_tag",
-            "body",
+            "caption",
         )
 
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
-            "title_tag": forms.TextInput(attrs={"class": "form-control"}),
-            # "author": forms.Select(attrs={"class":"form-control"}),
-            "body": forms.Textarea(attrs={"class": "form-control"}),
+            "caption": forms.Textarea(attrs={"class": "form-control"}),
         }

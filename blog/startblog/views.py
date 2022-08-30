@@ -57,18 +57,6 @@ class PostPage(DetailView):
         return context
 
 
-# class AddPost(CreateView):
-#     model = Post
-#     form_class = CreatePostForm
-#     template_name = "blog/add_post.html"
-
-
-class AddCategory(CreateView):
-    model = Category
-    template_name = "blog/add_category.html"
-    fields = "__all__"
-
-
 
 
 @login_required
@@ -90,14 +78,11 @@ def create_post(request: HttpRequest):
             
             new_post = Post.objects.last()
             return redirect("blog:post_details", pk=new_post.id)
-            # return redirect("/")
     context = {
         "form": post_form,
     }
     return render(request, "blog/add_post.html", context)
 
-    # new_post = Post.objects.last()
-    # return redirect("blog:post_details", pk=new_post.id)
 
 
 def user_cast_vote(request, pk, vote_value):
@@ -149,7 +134,6 @@ class CreatePost(View):
 
         new_post = Post.objects.last()
         return redirect("blog:post_details", pk=new_post.id)
-        # return HttpResponse("sdfghujhygtfrderftgyhu")
 
     def get(self, request: HttpRequest):
         form = CreatePostForm()

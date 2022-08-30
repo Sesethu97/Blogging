@@ -38,11 +38,10 @@ class Category(models.Model):
 class Post(models.Model):
     title: str = models.CharField(max_length=255)
     header_image = models.ImageField(upload_to="photo/", null=True, blank=True)
-    title_tag: str = models.CharField(max_length=255, default="my blog")
     author: str = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.DO_NOTHING
     )
-    body: str = RichTextField(blank=True, null=True)
+    caption: str = models.TextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
     snippet = models.CharField(

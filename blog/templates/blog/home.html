@@ -13,9 +13,9 @@
     {% for post in object_list %}
 
     {% if post.header_image %}
-    {% include 'components/post-image.html' %}
+    {% include 'components/post_img/post-image.html' %}
     {% else %}
-    {% include 'components/post-no-image.html' %}
+    {% include 'components/post_img/post-no-image.html' %}
     {% endif %}
     {% endfor %}
 </div>

@@ -1,0 +1,21 @@
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{ user.first_name }} {{ user.last_name}}
+      </a>
+      {% if user.id %}
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" target="_blank" href="{% url 'users:edit_profile' %}">Edit Setting</a>
+        <a class="dropdown-item" target="_blank" href="{% url 'users:edit_profile_info' user.id %}">Edit Profile
+          Page</a>
+
+        <a class="dropdown-item" target="_blank" href="{% url 'users:show_profile' user.id %}">Show Profile
+          Page</a>
+        {% else %}
+        <a class="dropdown-item" target="_blank" href="{% url 'users:create_profile' %}">Create Profile Page</a>
+        {% endif %}
+        <a class="dropdown-item" href="{% url 'users:logout' %}">Logout</a>
+      </div>
+    </li>
+  </ul>

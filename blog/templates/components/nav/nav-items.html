@@ -1,0 +1,22 @@
+{% if user.is_authenticated %}
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'blog:add_post' %}">Add Post</a>
+</li>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:edit_profile' %}">Edit Profile</a>
+</li>
+
+
+{% else %}
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+</li>
+{% endif %}
