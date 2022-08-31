@@ -32,6 +32,12 @@ class HomePage(ListView):
         context["category_menu"] = category_menu
         return context
 
+def base_home(request):
+    return render(request, 'blog/base_home.html', {})
+
+
+def contact_page(request):
+    return render(request, 'blog/contact_page.html', {})
 
 def category_list(request):
     category_menu_list = Category.objects.all()

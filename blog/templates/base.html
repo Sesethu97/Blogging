@@ -31,10 +31,12 @@
 
     }
 
-    /* .navbar.navbar-inverse .navbar-header .navbar-brander {
+    .navbar {
       text-align: center;
       float: none;
-    } */
+      display:initial;
+    }
+    
 
     .navbar-breader {
       text-transform: capitalize;
@@ -45,12 +47,19 @@
 
       text-align: center;
     }
-
+    .navbar-nav > li{
+      margin-left:20px;
+      margin-right:20px;
+    }
     .h1 {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 
     }
+    hr.new1 {
+  border-top: 1px solid rgb(5, 5, 5);
+}
+
 
     .navbar-header {
       display: flex;
@@ -62,58 +71,37 @@
 
 <body>
   <div class="blog-container">
-    <div class="flex justify-center bg-gray-100">
+    <div class="flex justify-center">
       <div class="flex-aself-center flex-column">
-        <h1>The Blog</h1>
-        <h1>a glimpse in...</h1>
+        <img src="{% static 'startblog/images/icon.png' %}" class=" img-icon"><h1>The Blog</h1>
+        <h2>a glimpse in...</h2>
       </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-
-        <a class="navbar-brand" href="{% url 'blog:home' %}">
-          <img src="{% static 'startblog/images/icon.png' %}" class=" img-icon"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="{% url 'blog:base_home' %}">New Home </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Category menu code -->
-        {% if category_menu %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Categories
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for item in category_menu %}
-                <a class="dropdown-item" href="{% url 'blog:category_post' item|slugify %}">
-                  {{item}}
-                </a>
-                {% endfor %}
-              </div>
-            </li>
-            {% else %}
-            <!-- category_list -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:category_list' %}">Categories</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'blog:home' %}">Blog posts </a>
             </li>
-            {% endif %}
-
-            {% include 'components/nav/nav-items.html' %}
-
-
-
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'blog:contact_page' %}">Contact </a>
+            </li>
           </ul>
-          {% if user.is_authenticated %}
-            {% include 'components/nav/user-dropdown.html' %}
-
-          {% endif %}
         </div>
+        
+
       </div>
+      
     </nav>
+    <hr class="new1">
+
+  </div> 
     <br />
     <div class="container">
 
