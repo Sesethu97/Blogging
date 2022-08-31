@@ -1,0 +1,37 @@
+
+        <!-- Category menu code -->
+        {% if category_menu %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Categories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for item in category_menu %}
+                <a class="dropdown-item" href="{% url 'blog:category_post' item|slugify %}">
+                  {{item}}
+                </a>
+                {% endfor %}
+              </div>
+            </li>
+            {% else %} 
+            <!-- category_list -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog:category_list' %}">Categories</a>
+            </li>
+            {% endif %}
+
+            {% include 'components/nav/nav-items.html' %}
+
+
+
+          </ul>
+          {% if user.is_authenticated %}
+            {% include 'components/nav/user-dropdown.html' %}
+
+          {% endif %}
+          
+        </div>
+        
