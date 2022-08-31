@@ -1,12 +1,72 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<style>
+  h1 {
+    font-size: medium;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    }
+    .homw-img {
+        padding: 100px 30px;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 900px;
+    }
+
+    .image-stack {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .image-stack__item--bottom {
+        grid-column: 4 / -1;
+        grid-row: 1;
+        padding-left: 20%;
+    }
+
+    .image-stack__item--top {
+        grid-row: 1;
+        grid-column: 1 / span 8;
+        padding-top: 20%; 
+        z-index: 1; 
+    }
+ 
+    .image-stack__item--bottom-B {
+        grid-row: 1;
+        grid-column: 4 / -2;
+        padding-top: 0%; 
+        z-index: 1; 
+    }
+
+
+    img {
+        width: 70%;
+        display: block;
+        border-radius: 50%;
+    }
+  
+</style>
 
 <div class="grid grid-cols-2 gap-2">
-    <div class="home-about">
-        <p>
-            info
-        </p>
-    </div>
+  <div class="home-about">
+    <h1>The blog is .....</h1>
+  </div>
+  <div class="home-img">
+    <div class="image-stack">
+        <div class="image-stack__item image-stack__item--top">
+          <img src="{% static 'startblog/images/home/picA.jpg' %}"  alt="">
+        </div>
+        <div class="image-stack__item image-stack__item--bottom">
+          <img src="{% static 'startblog/images/home/picB.jpg' %}" alt="">
+        </div>
+       
+          <div class="image-stack__item image-stack__item--bottom-B">
+            <img src="{% static 'startblog/images/home/picC.jpg' %}" alt="">
+          </div>
+      </div>
+  </div>
 </div>
 
 {% endblock %}
