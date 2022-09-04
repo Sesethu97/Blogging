@@ -11,7 +11,7 @@ from .views import (
     category_list,
     user_cast_vote,
     base_home,
-    contact_page,
+    
 )
 
 
@@ -20,7 +20,6 @@ app_name = "startblog"
 urlpatterns = [
     path("", HomePage.as_view(), name="home"),
     path("base_home", base_home, name="base_home"),
-    path("contact_page", contact_page, name="contact_page"),
     path("article/<int:pk>", PostPage.as_view(), name="post_details"),
     path("add_post/", create_post, name="add_post"),
     path("article/edit/<int:pk>", UpdatePost.as_view(), name="update_post"),

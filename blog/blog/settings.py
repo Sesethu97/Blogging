@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "startblog",
     "users",
     "ckeditor",
+    "contact"
 ]
 
 MIDDLEWARE = [
