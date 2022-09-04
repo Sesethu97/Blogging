@@ -38,8 +38,8 @@
 <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
 <br /><br />
 
-<a class="btn btn-primary btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=1 %}">LIke</a>
-<a class="btn btn-danger btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=-1 %}">dislike</a>
+<a class="btn btn-primary btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=1 %}">Like</a>
+<a class="btn btn-danger btn-sm" href="{% url 'blog:cast_vote' pk=post.pk vote_value=-1 %}">Dislike</a>
 
 <hr>
 <br />
@@ -56,7 +56,7 @@
     <small><a href="{% url 'users:login' %}">Login to Like</small></a>
     {% endif %}
 
-    - {{ total_likes}} like
+    - {{ total_likes}} Like
 </form>
 
 

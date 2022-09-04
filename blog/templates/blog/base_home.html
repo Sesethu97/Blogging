@@ -1,13 +1,27 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <style>
-  h1 {
-    font-size: medium;
-    font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
+    h1 {
+      font-size: medium;
+      font-weight: 700;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: italic;
+      }
+    h2{
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-style: italic;
     }
-    .homw-img {
+      
+    .navbar-nav {
+        font-size: medium;
+        font-weight: 700;
+
+    }
+    /* @media (min-width: 992px)
+    .navbar-expand-lg .navbar-collapse {
+        font-size: large;
+    } */
+    .home-img {
         padding: 100px 30px;
         width: 100%;
         margin: 0 auto;
@@ -51,7 +65,8 @@
 
 <div class="grid grid-cols-2 gap-2">
   <div class="home-about">
-    <h1>The blog is .....</h1>
+    <h1>Life Cam</h1>
+    <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
   </div>
   <div class="home-img">
     <div class="image-stack">
