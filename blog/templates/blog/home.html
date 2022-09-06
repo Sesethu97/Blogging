@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<style>
+    .floating-btn{
+        width: 100px;
+        height: 100px;
+        background: #FFB6C1;
+        display: flex;
+        border-radius: 50%;
+        color: black;
+        font-size: 40px;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 2px 2px 5px rgba(0,0,0, 0.25);
+        outline: #FFB6C1;
+        border: none;
+        cursor: pointer;
+    }
+</style>
 {% if messages %}
 {% for message in messages %}
 <div id="msg">{{ message }}</div>
@@ -25,6 +46,12 @@
     {% include 'components/post_img/post-no-image.html' %}
     {% endif %}
     {% endfor %}
+</div>
+
+<div class="floating-btn">
+    <!-- <h1>floating button hopefully</h1> -->
+    {% include 'components/nav/below-new-nav.html' %}
+    <div  class="material-icons">add</a>
 </div>
 
 
