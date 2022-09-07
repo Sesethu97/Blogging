@@ -28,28 +28,7 @@
                     <h5 class="card-title"> {{ page_user.username}} 
                     </h5>
 
-                    {% if page_user.website_url%}
-                    <a href="page_user.website_url">Website | </a>
-
-                    {% endif %}
-                    {% if page_user.facebook_url%}
-
-                    <a target="_blank" href="page_user.facebook_url">Facebook | </a>
-                    {% endif %}
-                    {% if page_user.twitter_url%}
-
-                    <a target="_blank" href="{{page_user.twitter_url}}">Twitter | </a>
-                    {% endif %}
-                    {% if page_user.instagram_url%}
-
-                    <a target="_blank" href="{{page_user.instagram_url}}">Instagram | </a>
-                    {% endif %}
-                    {% if page_user.pinterest_url%}
-
-                    <a target="_blank" href="{{page_user.pinterest_url}}">Pinterest </a>
-                    {% endif %}
-                    {% comment %}<img src="{{page_user.profile_picture.url}}" class="card-text" />{% endcomment %}
-
+                    {% include 'components/user_info/info' %}
 
                 <p class="card-text text-muted">{{ page_user.bio}}</p>
                 

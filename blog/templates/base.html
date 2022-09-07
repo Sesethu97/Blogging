@@ -54,8 +54,14 @@
       margin-left:20px;
       margin-right:20px;
     }
-    
-    h1 {
+    h1{
+      font-weight: bolder;
+
+    }
+    h4{
+      font-style: italic;
+    }
+    h3 {
       left: 25%;
       /* padding-left: 5%; */
       padding-top: 50%;
@@ -89,7 +95,6 @@
     }
   
    .img{
-      border-radius: 50%;
       padding-top: 8%;
       display:inline-block;
       vertical-align:top;
@@ -247,13 +252,14 @@
         <div class="flex justify-center">
         <div class="flex-aself-center flex-column">
           <div class="img">
-
-
-          <img src="{% static 'startblog/images/cam.png' %}"    class=" img-icon">
+          
+            <a href="{% url 'blog:base_home' %}">
+              <img src="{% static 'startblog/images/cam.png' %}" class=" img-icon" alt="">
+            </a>
           </div>
           <div class= "text">
 
-          <h1>Life Cam</h1>
+          <h3>Life Cam</h3>
           <h2>One click in...</h2>
           </div> 
         
