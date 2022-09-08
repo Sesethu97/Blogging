@@ -26,11 +26,6 @@
 
     }
 
-    .img-icon {
-      width: 50px;
-      height: 50px;
-
-    }
 
     .navbar {
       text-align: center;
@@ -92,12 +87,17 @@
     }
     .justify-center {
       height: 94px;
+      
+
     }
   
    .img{
       padding-top: 8%;
       display:inline-block;
       vertical-align:top;
+      z-index: 50;
+
+
     }
     .text{
         display:inline-block;
@@ -124,6 +124,9 @@
       width: 2cm;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      
+
+
 
     }
     .bubbles-container{
@@ -236,38 +239,36 @@
   <div class="whole-container">
     
     <div class="blog-container">
-      <div class="bubbles-container">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-      </div>
+      
     
         <div class="flex justify-center">
-        <div class="flex-aself-center flex-column">
-          <div class="img">
-          
-            <a href="{% url 'blog:base_home' %}">
-              <img src="{% static 'startblog/images/cam.png' %}" class=" img-icon" alt="">
-            </a>
-          </div>
-          <div class= "text">
+          <div class="flex-aself-center flex-column">
+            <div class="img">
+            
+              <a href="{% url 'blog:base_home' %}">
+                <img src="{% static 'startblog/images/cam.png' %}" class="img-icon" alt="">
+              </a>
+            </div>
+            <div class= "text">
 
-          <h3>Life Cam</h3>
-          <h2>One click in...</h2>
-          </div> 
-        
+              <h3>Life Cam</h3>
+              <h2>One click in...</h2>
+            </div> 
+          </div>
         </div>
-   
-      </div>
-      <div class="row">>
-      
+        <div class="bubbles-container">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+      <div class="row">      
       </div>
       <hr class="new1">
 

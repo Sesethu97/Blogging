@@ -37,24 +37,32 @@
     </div>
 </nav>
 
+<div class="move">
+    <a href="{% url 'blog:base_home' %}" class="previous round">&#8249;</a>
+    <a href="{% url 'contact:contact_views' %}" class="next round">&#8250;</a>
 
+
+</div>
 
 <div class="grid grid-cols-4 gap-4 auto-cols-min">
     {% for post in object_list %}
 
-    {% if post.header_image %}
     {% include 'components/post_img/post-image.html' %}
-    {% else %}
-    {% include 'components/post_img/post-no-image.html' %}
-    {% endif %}
+    
     {% endfor %}
 </div>
+{% if request.user.is_authenticated %}
 
 <div class="floating-btn">
-    <!-- <h1>floating button hopefully</h1> -->
-    {% include 'components/nav/below-new-nav.html' %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'blog:add_post' %}">
+    
     <div  class="material-icons">add</a>
+        {% endif %}
 </div>
+<br /><br />
+{% endif %}
+
 
 
 {% endblock %}

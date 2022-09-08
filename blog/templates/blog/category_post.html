@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    h9{
+        font-weight: bolder;
+        color: #DB7093;
+        display: block;
+        position:relative; 
+        text-align: center;
+        top:200px;
+            
+        
+    }
+</style>
 
 {% if category_post %}
 
@@ -20,6 +32,9 @@
     {% endfor %}
 </ul>
 {% else %}
-<h2>Sorry this page does not exist...</h2>
+
+<a href="{% url 'blog:home' %}" >
+    <h9>Sorry this page does not exist...</h9>
+</a>
 {% endif %}
 {% endblock %}
