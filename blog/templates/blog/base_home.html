@@ -1,20 +1,28 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <style>
-    h1 {
+     
+    h11{
+      position:relative;
       font-size: x-large;
       font-weight: 700;
       font-family: Arial, Helvetica, sans-serif;
       font-style: italic;
-      padding-top: 15%;
+      padding-top: 30%;
       padding-bottom: 7%;
+      top:15%;
       }
 
     h2{
+
+     
       font-family:Verdana, Geneva, Tahoma, sans-serif;
       font-style: italic;
     }
     p{
+      padding-top: 15%;
+      padding-bottom: 7%;
+      top:15%;
       font-family: URW Chancery L, cursive;
     }
       
@@ -43,7 +51,7 @@
     .image-stack__item--bottom {
         grid-column: 4 / -1;
         grid-row: 1;
-        padding-left: 20%;
+        padding-left: 10%;
     }
 
     .image-stack__item--top {
@@ -56,34 +64,58 @@
     .image-stack__item--bottom-B {
         grid-row: 1;
         grid-column: 4 / -2;
-        padding-top: 0%; 
+        padding-top: 20%; 
         z-index: 1; 
     }
+    .move-forward{
+        position: relative;
+        left: 1200px;
+        color: rgb(0,0,0)
+            
+    }
+    .move-forward :hover{
+        color: #FF1493;
+
+    }
+
+    .contacts{
+      position: relative;
+     bottom: 300px;
+
+    }
+    .contacts :hover{
+      color: #FF1493;
 
 
+    }
     img {
         width: 70%;
         display: block;
     }
   
 </style>
+<div class="move-forward">
 
+  <a href="{% url 'blog:home' %}" class="next round">&#8250;</a>
+  </div>
+  
+  
 <div class="grid grid-cols-2 gap-2">
   <div class="home-about">
-    <h2>Life Cam</h2>
+    <h11 class="font-effect-shadow-multiple">Life Cam</h11>
     <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
   </div>
   <div class="home-img">
     <div class="image-stack">
         <div class="image-stack__item image-stack__item--top">
-          <img src="{% static 'startblog/images/home/picA.jpg' %}"  alt="">
+          <img src="{% static 'startblog/images/home/picA.png' %}"  alt="">
         </div>
         <div class="image-stack__item image-stack__item--bottom">
-          <img src="{% static 'startblog/images/home/picB.jpg' %}" alt="">
+          <img src="{% static 'startblog/images/home/picC.jpeg' %}" alt="">
         </div>
        
           <div class="image-stack__item image-stack__item--bottom-B">
-            <img src="{% static 'startblog/images/home/picC.jpg' %}" alt="">
+            <img src="{% static 'startblog/images/home/picB.png' %}" alt="">
           </div>
       </div>
   </div>
@@ -94,12 +126,6 @@
   </p> 
 
 </div>
-<br /><br />
-<div class="move">
-
-<a href="{% url 'blog:home' %}" class="next round">&#8250;</a>
-</div>
-
 
 
 

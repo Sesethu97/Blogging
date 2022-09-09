@@ -2,8 +2,10 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 from .forms import ContactForm
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def contact_views(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

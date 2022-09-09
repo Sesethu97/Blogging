@@ -146,13 +146,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "blog:home"
 LOGOUT_REDIRECT_URL = "blog:home"
 
-CONTACT_EMAIL = 'contact@example.com'
-ADMIN_EMAILS = ['admin@example.com', ]
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = "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"
+SENDGRID_SANDBOX_MODE_IN_DEBUG = True
+
+CONTACT_EMAIL = 'siyomila@gmail.com'
+ADMIN_EMAIL = ['siyomila@gmail.com']
 
 
-# Twilio SendGrid
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+# # Twilio SendGrid
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')

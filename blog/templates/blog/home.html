@@ -20,6 +20,20 @@
         outline: #FFB6C1;
         border: none;
         cursor: pointer;
+        position: relative;
+        left: 1100px;
+        top: 50px;
+
+    }
+    .move-forward{
+        position: relative;
+        left: 1200px;
+        color: rgb(0,0,0)
+            
+    }
+    .move-forward, .move-back :hover{
+        color: #FF1493;
+
     }
 </style>
 {% if messages %}
@@ -37,11 +51,11 @@
     </div>
 </nav>
 
-<div class="move">
+<div class="move-back">
     <a href="{% url 'blog:base_home' %}" class="previous round">&#8249;</a>
+</div>
+<div class="move-forward">
     <a href="{% url 'contact:contact_views' %}" class="next round">&#8250;</a>
-
-
 </div>
 
 <div class="grid grid-cols-4 gap-4 auto-cols-min">
@@ -59,6 +73,7 @@
     
     <div  class="material-icons">add</a>
         {% endif %}
+    </div>
 </div>
 <br /><br />
 {% endif %}

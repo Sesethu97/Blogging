@@ -23,11 +23,11 @@ class CreatePostForm(forms.ModelForm):
             "header_image",
         )
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
+            "title": forms.TextInput(attrs={"class": "form-control border",}),
             "category": forms.Select(
-                choices=choices_list, attrs={"class": "form-control"}
+                choices=choices_list, attrs={"class": "form-control border"}
             ),
-            "caption": forms.Textarea(attrs={"class": "form-control"}),
+            "caption": forms.Textarea(attrs={"class": "form-control border", "cols": "2", "rows": "2"}), 
         }
 
 

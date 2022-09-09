@@ -1,28 +1,56 @@
 <style>
- 
+
+  .user-detail {
+    color:rgb(0, 0, 0);
+    right: 500px;
+    font-weight: bolder;
+    font-family: "Sofia", sans-serif;
+
+  }
 </style>
 
-
 <ul class="navbar-nav ml-auto">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+  <li class="nav-item dropdown">
+    <div class="user-detail">
+      <a
+        class="nav-link-name dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         {{ user.first_name }} {{ user.last_name}}
       </a>
-      {% if user.id %}
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item"  href="{% url 'users:edit_profile' %}">Edit Setting</a>
-        <a class="dropdown-item" href="{% url 'users:edit_profile' %}">Edit Profile</a>
-      
-        <a class="dropdown-item" href="{% url 'users:edit_profile_info' user.id %}">Edit Profile
-          Page</a>
+    </div>
+    {% if user.id %}
+    <div
+      class="dropdown-menu dropdown-menu-right"
+      aria-labelledby="navbarDropdown"
+    >
+      <a class="dropdown-item" href="{% url 'users:edit_profile' %}"
+        >Edit Setting</a
+      >
+      <a class="dropdown-item" href="{% url 'users:edit_profile' %}"
+        >Edit Profile</a
+      >
 
-        <a class="dropdown-item" href="{% url 'users:show_profile' user.id %}">Show Profile
-          Page</a>
-        {% else %}
-        <a class="dropdown-item" href="{% url 'users:create_profile' %}">Create Profile Page</a>
-        {% endif %}
-        <a class="dropdown-item" href="{% url 'users:logout' %}">Logout</a>
-      </div>
-    </li>
-  </ul>
+      <a
+        class="dropdown-item"
+        href="{% url 'users:edit_profile_info' user.id %}"
+        >Edit Profile Page</a
+      >
+
+      <a class="dropdown-item" href="{% url 'users:show_profile' user.id %}"
+        >Show Profile Page</a
+      >
+      {% else %}
+      <a class="dropdown-item" href="{% url 'users:create_profile' %}"
+        >Create Profile Page</a
+      >
+      {% endif %}
+      <a class="dropdown-item" href="{% url 'users:logout' %}">Logout</a>
+    </div>
+  </li>
+</ul>
