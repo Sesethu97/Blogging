@@ -15,24 +15,24 @@
     margin: 8px 0;
     display: inline-block;
   }
-  .previous {
+  .move-back {
     position: relative;
+    top: 35px;
     color: rgb(0, 0, 0);
   }
-  .previous :hover {
+  .move-back :hover {
     color: #ff1493;
   }
-  .input{
-    color:red;
-
-  }
+  
 </style>
 
 <div class="grid grid-cols-2 gap-2">
   <h1>
-    <a href="{% url 'blog:home' %}" class="previous round">&#8249;</a>
+    <div class="move-back">
+      <a href="{% url 'blog:home' %}" class="previous round">&#8249;</a>
 
-    <img src="{%static 'startblog/images/contact/phone.png' %}" />
+      <img src="{%static 'startblog/images/contact/phone.png' %}" />
+    </div>
   </h1>
 
   <form action="" method="post">

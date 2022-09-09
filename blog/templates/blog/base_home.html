@@ -70,6 +70,7 @@
     .move-forward{
         position: relative;
         left: 1200px;
+        top: 35px;
         color: rgb(0,0,0)
             
     }
@@ -80,7 +81,8 @@
 
     .contacts{
       position: relative;
-     bottom: 300px;
+      color : rgb(0,0,0);
+      bottom: 300px;
 
     }
     .contacts :hover{
@@ -122,7 +124,7 @@
 </div>
 <div class="contacts">
   <p> For more information
-    <a class="nav-link active" aria-current="page" href="{% url 'contact:contact_views' %}">Contact Us</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'contact:contact_views' %}" class="contact-link">Contact Us</a>
   </p> 
 
 </div>
