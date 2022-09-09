@@ -147,7 +147,8 @@ LOGIN_REDIRECT_URL = "blog:home"
 LOGOUT_REDIRECT_URL = "blog:home"
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = "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"
+SENDGRID_API_KEY = config("SENDGRID_API_KEY")
+
 SENDGRID_SANDBOX_MODE_IN_DEBUG = True
 
 CONTACT_EMAIL = 'siyomila@gmail.com'

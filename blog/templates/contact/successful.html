@@ -2,6 +2,23 @@
 {% load static %}
 
 {% block content %}
-<h9>Thank you for your inquiry</h9>
-<h10>Your contact information and message was successfully submitted.</h10>
+<style>
+    .h9{
+        font-weight: bolder;
+        color: #DB7093;
+        display: block;
+        position:relative; 
+        text-align: center;
+        top:200px;
+    }
+   
+</style>
+<div class="email">
+    <h9>Thank you for your inquiry</h9>
+    <p>Your contact information and message was successfully submitted.</p>
+</div>
+
+<div class="home-page">
+    <a href="{% url 'blog:home' %}">home</a>
+    
 {% endblock %}
