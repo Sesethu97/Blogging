@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-    .h9{
+    h9{
         font-weight: bolder;
-        color: #DB7093;
+        color: #000000;
         display: block;
         position:relative; 
         text-align: center;
         top:200px;
+        font-size: x-large;
             
         
     }
+    
 </style>
 
 {% if category_post %}
@@ -19,7 +21,7 @@
 <ul>
     {% for post in category_post %}
     <li><a href="{% url 'blog:post_details' pk=post.pk %}">
-            {{ post.title }}</a> -{{ post.category }} - {{ post.author. }} - {{ post.post_date}}
+            {{ post.title }}</a> - <b>{{ post.category }}</b> - {{ post.author. }}  {{ post.post_date}}
         <small>
             {% if user.is_authenticated %}
 

@@ -71,7 +71,9 @@
         position: relative;
         left: 1200px;
         top: 35px;
-        color: rgb(0,0,0)
+        color: rgb(0,0,0);
+        font-size: 35px;
+
             
     }
     .move-forward :hover{
@@ -80,10 +82,11 @@
     }
 
     .contacts{
-      position: relative;
       color : rgb(0,0,0);
-      bottom: 300px;
-
+      position:relative; 
+      right:1150px; 
+      top:300px;
+      font-size: 14px;
     }
     .contacts :hover{
       color: #FF1493;
@@ -94,41 +97,60 @@
         width: 70%;
         display: block;
     }
+    .nav-link {
+      text-decoration: underline;
+      position:relative; left:0px; top:2px
+
+    }
+    .baseContainer{
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+    @media only screen and (max-width: 480px) {
+      .baseContainer{
+        display: flex;
+      height: 100vh;
+      width: 100%;
+  }
   
+}
 </style>
-<div class="move-forward">
-
-  <a href="{% url 'blog:home' %}" class="next round">&#8250;</a>
+<div class="baseContainer">
+  <div class="move-forward">
+    
+    <a href="{% url 'blog:home' %}" class="next round">&#8250;</a>
+    
   </div>
-  
-  
-<div class="grid grid-cols-2 gap-2">
-  <div class="home-about">
-    <h11 class="font-effect-shadow-multiple">Life Cam</h11>
-    <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
-  </div>
-  <div class="home-img">
-    <div class="image-stack">
-        <div class="image-stack__item image-stack__item--top">
-          <img src="{% static 'startblog/images/home/picA.png' %}"  alt="">
-        </div>
-        <div class="image-stack__item image-stack__item--bottom">
-          <img src="{% static 'startblog/images/home/picC.jpeg' %}" alt="">
-        </div>
-       
-          <div class="image-stack__item image-stack__item--bottom-B">
-            <img src="{% static 'startblog/images/home/picB.png' %}" alt="">
+    
+    
+  <div class="grid grid-cols-2 gap-2">
+    <div class="home-about">
+      <h11 class="font-effect-shadow-multiple">Life Cam</h11>
+      <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
+    </div>
+    <div class="home-img">
+      <div class="image-stack">
+          <div class="image-stack__item image-stack__item--top">
+            <img src="{% static 'startblog/images/home/picA.png' %}"  alt="">
           </div>
-      </div>
+          <div class="image-stack__item image-stack__item--bottom">
+            <img src="{% static 'startblog/images/home/picC.jpeg' %}" alt="">
+          </div>
+        
+            <div class="image-stack__item image-stack__item--bottom-B">
+              <img src="{% static 'startblog/images/home/picB.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="contacts">
+    <p> For more information
+      <a class="nav-link active" aria-current="page" href="{% url 'contact:contact_views' %}" class="contact-link">Contact Us</a>
+    </p> 
+
   </div>
 </div>
-<div class="contacts">
-  <p> For more information
-    <a class="nav-link active" aria-current="page" href="{% url 'contact:contact_views' %}" class="contact-link">Contact Us</a>
-  </p> 
-
-</div>
-
 
 
 {% endblock %}

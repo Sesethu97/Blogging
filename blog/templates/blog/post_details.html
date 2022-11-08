@@ -7,7 +7,7 @@
 {% block content %}
 
 <style>
-
+    
 </style>
 
 <h1>{{ post.title }} </h1>
@@ -90,10 +90,11 @@
 
             {% endif %}
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10  ">
             <div class="card-body">
                 <h5 class="card-title"> 
-                    <a href="{% url 'users:show_profile' post.author.id %}">{{ post.author.first_name}} {{ post.author.last_name}}</a></h5>
+                    <a href="{% url 'users:show_profile' post.author.id %}">{{ post.author.first_name}} {{ post.author.last_name}}</a>
+                </h5>
                 <p class="small text-muted">
                     {% if post.author.website_url%}
                         <a href="post.author.website_url">Website | </a>
@@ -117,7 +118,7 @@
                     {% endif %}
                 
                 <p class="card-text text-muted">{{ post.author.bio}}</p>
-                <p class="card-text"><small class="text-muted">last updateed: {{post.post_time|naturaltime}}</small></p>
+                <p class="card-text"><small class="text-muted">last updated: {{post.post_time|naturaltime}}</small></p>
 
 
             </div>

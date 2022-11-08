@@ -11,20 +11,22 @@
         top:2px;
     }
 </style>
+
 <div class="card">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">    
     
-    
-    <a href="{% url 'blog:post_details' pk=post.pk %}">
-    
-        {% if post.header_image %}
-        <img src="{{ post.header_image.url }}">
-            {% endif %}
-             <small>{{ post.author.first_name}} {{ post.author.last_name}}
-                <br/>{{ post.post_date}}</small>
-
+        <a href="{% url 'blog:post_details' pk=post.pk %}">
         
-    <small>
-    </a>
+            {% if post.header_image %}
+            <img src="{{ post.header_image.url }}">
+                {% endif %}
+                <small>{{ post.author.first_name}} {{ post.author.last_name}}
+                    <br/>{{ post.post_date}}</small>
 
-    <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>
+            
+        <small>
+        </a>
+
+        <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>
+    </div>
 </div>

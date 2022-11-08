@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Register{% endblock %}
+<style>
+    .btn-secondary{
+        background: #000000;
+    }
+</style>
 
 {% block content %}
 
@@ -9,7 +14,10 @@
     <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    <br/>
     <button class="btn btn-secondary">Register</button>
+    <a href="{% url 'blog:home' %}" class="btn btn-secondary">Back</a>
+<br /><br />
     </form>
 </div>
 
