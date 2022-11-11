@@ -1,19 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<style>
-    h9{
-        font-weight: bolder;
-        color: #000000;
-        display: block;
-        position:relative; 
-        text-align: center;
-        top:200px;
-        font-size: x-large;
-            
-        
-    }
-    
-</style>
+
 
 {% if category_post %}
 
@@ -36,7 +23,7 @@
 {% else %}
 
 <a href="{% url 'blog:home' %}" >
-    <h9>Sorry this page does not exist...</h9>
+    <div class="text-center ml-20  mt-20 hover:text-pink-700 text-black font-bold py-2 px-4 rounded">Sorry this page does not exist...</div>
 </a>
 {% endif %}
 {% endblock %}

@@ -4,48 +4,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-<style>
-    .floating-btn{
-        width: 100px;
-        height: 100px;
-        background: #000000;
-        display: flex;
-        border-radius: 50%;
-        color: #FFB6C1;
-        font-size: 40px;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: 2px 2px 5px rgba(0,0,0, 0.25);
-        outline: #FFB6C1;
-        border: none;
-        cursor: pointer;
-        position: relative;
-        left: 1100px;
-        top: 50px;
-
-    }
-    .move-forward {
-        position: relative;
-        left: 1200px;
-        bottom: 25px;
-        font-size: 35px;
-
-            
-    }
-    .move-back{
-        
-        font-size: 35px;
-    }
-    .previous:hover, .next:hover{
-        color: #FF1493;
-
-    }
-    
-
-    
-    
-</style>
 
 
 {% if messages %}
@@ -57,20 +15,14 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-
-        {% include 'components/nav/below-new-nav.html' %}
+        {% include 'components/nav/below-new-nav.html'%}
     </div>
 </nav>
 
-<div class="move-back">
-    <a href="{% url 'blog:base_home' %}" class="previous round">&#8249;</a>
-</div>
-<div class="move-forward">
-    <a href="{% url 'contact:contact_views' %}" class="next round">&#8250;</a>
-</div>
+
 
 <div class="postage">
-    <div class=" grid grid-cols-4 gap-4 auto-cols-min ">
+    <div class=" m-20 grid grid-cols-4 gap-4 auto-cols-min ">
         {% for post in object_list %}
 
         {% include 'components/post_img/post-image.html' %}
@@ -80,11 +32,20 @@
 </div>
 {% if request.user.is_authenticated %}
 
-<div class="floating-btn">
+<div class="floating-btn relative">
     {% if user.is_authenticated %}
     <a href="{% url 'blog:add_post' %}">
     
-    <div  class="material-icons">add</a>
+
+    <button
+        class="p-0 w-20 h-20 absolute bottom-0 right-0 mr-20 bg-black rounded-full hover:bg-pink-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+         <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-7 inline-block">
+        <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
+                            C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
+                            C15.952,9,16,9.447,16,10z" />
+        </svg>
+    </button>
+    </a>
         {% endif %}
     </div>
 </div>

@@ -1,95 +1,71 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'contact/contact.css' %}"
-/>
-
-<style>
-  .input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-  }
-  .move-back {
-    position: relative;
-    top: 35px;
-    color: #000000;
-    font-size: 35px;
-
-  }
-  .move-back :hover {
-    color: #ff1493;
-
-  }
-  
-</style>
 
 <div class="grid grid-cols-2 gap-2">
-  <h1>
-    <div class="move-back">
-      <a href="{% url 'blog:home' %}" class="previous round">&#8249;</a>
+  <div class="mt-10 ml-20">
+    <img src="{% static 'images/contact/phone.png' %}" />
+  </div>
 
-      <img src="{%static 'startblog/images/contact/phone.png' %}" />
-    </div>
-  </h1>
+  <div>
+    <h6 class=" mt-10 mr-20 text-center text-2xl font-extrabold	">Contact Us</h6>
+    <form action="" method="post" class="mt-10 mr-20 ">
+      {% csrf_token %}
+      <input
+        type="hidden"
+        name="csrfmiddlewaretoken"
+        value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq"
+      />
+      <tr>
+        <th>
+          <label class="text-lg text-semibold">Email:</label>
+        </th>
+        <td>
+          <input
+            type="email"
+            name="email"
+            class="form-control border-solid border-2 border-black"
+            maxlength="254"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label class="text-lg text-semibold">Subject:</label>
+        </th>
+        <td>
+          <input
+            type="text"
+            name="subject"
+            maxlength="255"
+            class="form-control border-solid border-2 border-black"
 
-  <form action="" method="post">
-    {% csrf_token %}
-    <input
-      type="hidden"
-      name="csrfmiddlewaretoken"
-      value="yTF5g7ceTgkwsOimKxZpuV10DG4a1TWFwQ60pneu047lPvu6kTAlNYPfYEC9G8jq"
-    />
-    <tr>
-      <th>
-        <label for="id_email">Email:</label>
-      </th>
-      <td>
-        <input
-          type="email"
-          name="email"
-        class="form-control"
-          maxlength="254"
-          required
-          id="id_email"
-        />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_subject">Subject:</label>
-      </th>
-      <td>
-        <input
-          type="text"
-          name="subject"
-          maxlength="255"
-          required
-          id="id_subject"
-        />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_message">Message:</label>
-      </th>
-      <td>
-        <textarea
-          name="message"
-          cols="2"
-          rows="2"
-          required
-          id="id_message"
-        ></textarea>
-      </td>
-    </tr>
-    <button class="btn btn-secondary">Submit</button>
-  </form>
+
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label class="text-lg text-semibold">Message:</label>
+        </th>
+        <td>
+          <textarea
+       
+            cols="2"
+            rows="2"
+            class="form-control border-solid border-2 border-black"
+
+            required
+          
+          ></textarea>
+        </td>
+      </tr>
+      <button class="bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 border border-pink-700 rounded">
+
+     Submit</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

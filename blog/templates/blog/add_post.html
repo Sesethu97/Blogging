@@ -2,26 +2,19 @@
 {% block title %}posts{% endblock %}
 
 {% block content %}
-<style>
-   
 
-    .form-group {
-        font-weight: bolder;
-    }
-    .border {
-        border: 2px black solid;
-    }
-</style>
 {% if user.is_authenticated %}
+<h7 class="text-center ml-20  mt-20 text-black text-2xl font-extrabold	">Add Post</h7>
 
-<br /><br />
-<div class="form-group" >
-    <form method="POST" enctype="multipart/form-data">
+<div class="ml-20 mr-20 mt-10 text-bold" >
+    <form method="POST" enctype="multipart/form-data" class="text-bold">
         {% csrf_token %}
         
         {{ form.media}}
         {{ form.as_p}}
-        <button class="btn btn-secondary">Post</button>
+        <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+        Post
+          </button>   
     </form>
 </div>
 

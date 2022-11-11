@@ -1,155 +1,31 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<style>
-     
-    h11{
-      position:relative;
-      font-size: x-large;
-      font-weight: 700;
-      font-family: Arial, Helvetica, sans-serif;
-      font-style: italic;
-      padding-top: 30%;
-      padding-bottom: 7%;
-      top:15%;
-      }
-
-    h2{
-
-     
-      font-family:Verdana, Geneva, Tahoma, sans-serif;
-      font-style: italic;
-    }
-    p{
-      padding-top: 15%;
-      padding-bottom: 7%;
-      top:15%;
-      font-family: URW Chancery L, cursive;
-    }
-      
-    .navbar-nav {
-        font-size: medium;
-        font-weight: 700;
-
-    }
-    /* @media (min-width: 992px)
-    .navbar-expand-lg .navbar-collapse {
-        font-size: large;
-    } */
-    .home-img {
-        padding: 100px 30px;
-        width: 100%;
-        margin: 0 auto;
-        max-width: 900px;
-    }
-
-    .image-stack {
-        display: grid;
-        position: relative;
-        grid-template-columns: repeat(12, 1fr);
-    }
-
-    .image-stack__item--bottom {
-        grid-column: 4 / -1;
-        grid-row: 1;
-        padding-left: 10%;
-    }
-
-    .image-stack__item--top {
-        grid-row: 1;
-        grid-column: 1 / span 8;
-        padding-top: 20%; 
-        z-index: 1; 
-    }
- 
-    .image-stack__item--bottom-B {
-        grid-row: 1;
-        grid-column: 4 / -2;
-        padding-top: 20%; 
-        z-index: 1; 
-    }
-    .move-forward{
-        position: relative;
-        left: 1200px;
-        top: 35px;
-        color: rgb(0,0,0);
-        font-size: 35px;
-
-            
-    }
-    .move-forward :hover{
-        color: #FF1493;
-
-    }
-
-    .contacts{
-      color : rgb(0,0,0);
-      position:relative; 
-      right:1150px; 
-      top:300px;
-      font-size: 14px;
-    }
-    .contacts :hover{
-      color: #FF1493;
 
 
-    }
-    img {
-        width: 70%;
-        display: block;
-    }
-    .nav-link {
-      text-decoration: underline;
-      position:relative; left:0px; top:2px
-
-    }
-    .baseContainer{
-      display: flex;
-      height: 100vh;
-      width: 100%;
-    }
-    @media only screen and (max-width: 480px) {
-      .baseContainer{
-        display: flex;
-      height: 100vh;
-      width: 100%;
-  }
-  
-}
-</style>
 <div class="baseContainer">
-  <div class="move-forward">
-    
-    <a href="{% url 'blog:home' %}" class="next round">&#8250;</a>
-    
-  </div>
-    
+ 
     
   <div class="grid grid-cols-2 gap-2">
-    <div class="home-about">
-      <h11 class="font-effect-shadow-multiple">Life Cam</h11>
-      <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
+    <div class="mt-20">
+      <h11 class="ml-20  font-bold text-4xl font-effect-shadow-multiple">Life Cam</h11>
+      <div class="mt-10 ml-10 mr-10">
+
+        <p><i>Welcome</i> to the photo blog where you will be able to <b>share</b> memories of your life with the use of images<p>
+      </div>
+      <div class="mt-10 mb-20 ml-20 mr-10">
+        <span> For more information:  </span>
+        
+          <a class="text-black mt-20 font-bold hover:text-pink-700" aria-current="page" href="{% url 'contact:contact_views' %}" class="contact-link"> Contact Us</a>
+    
+      </div>
     </div>
     <div class="home-img">
-      <div class="image-stack">
-          <div class="image-stack__item image-stack__item--top">
-            <img src="{% static 'startblog/images/home/picA.png' %}"  alt="">
-          </div>
-          <div class="image-stack__item image-stack__item--bottom">
-            <img src="{% static 'startblog/images/home/picC.jpeg' %}" alt="">
-          </div>
         
-            <div class="image-stack__item image-stack__item--bottom-B">
-              <img src="{% static 'startblog/images/home/picB.png' %}" alt="">
-            </div>
-        </div>
+            <img src="{% static 'startblog/images/home/picA.png' %}" class="h-56 mt-20  ml-20 content-center"  alt="">        
+       
     </div>
   </div>
-  <div class="contacts">
-    <p> For more information
-      <a class="nav-link active" aria-current="page" href="{% url 'contact:contact_views' %}" class="contact-link">Contact Us</a>
-    </p> 
 
-  </div>
 </div>
 
 

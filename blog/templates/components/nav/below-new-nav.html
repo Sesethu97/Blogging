@@ -1,12 +1,14 @@
+
+
 {% if request.user.is_authenticated %}
         <!-- Category menu code -->
         {% if category_menu %}
         
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="mt-10  text-l font-bold mr-10 ml-10 collapse navbar-collapse" >
+          <ul class="navbar-navs text-medium">
 
                 {% for item in category_menu %}
-                <a class="nav-link active" href="{% url 'blog:category_post' item|slugify %}">
+                <a class="navs-link mx-3" href="{% url 'blog:category_post' item|slugify %}">
                   {{item}}
                 </a>
                 {% endfor %}
@@ -14,12 +16,12 @@
             </li>
             {% else %} 
             <!-- category_list -->
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:category_list' %}">Categories</a>
+            <li class="text-center text-l font-bold ml-10">
+              <a class="navs_link" href="{% url 'blog:category_list' %}">Categories</a>
             </li>
             {% endif %}
 
-            {% include 'components/nav/nav-items.html' %}
+           
 
 
           </ul>
@@ -30,16 +32,16 @@
           {% endif %}
 
           {% else %}
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div class="flex content-center">
+            <ul class="navbar-nav me-auto text-center text-xl font-bold ml-10 mb-2 mb-lg-0">
   
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:register' %}">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:login' %}">Login</a>
-        </li>
-        </ul>
+              <li class="text-center">
+                <a  href="{% url 'users:register' %}">Register</a>
+              </li>
+              <li class="text-center">
+                <a href="{% url 'users:login' %}">Login</a>
+              </li>
+          </ul>
         </div>
           {% endif %}
         
