@@ -29,27 +29,27 @@
     <div class="flex w-screen">
     <p class="break-normal">{{ post.body|safe }}</p>
     </div>
-    
-    {% if liked %}
-    <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
-    <a    href="{% url 'blog:cast_vote' pk=post.pk vote_value=1 %}">Liked</a></button>
-    {% else %}
-    <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
-    <a   href="{% url 'blog:cast_vote' pk=post.pk vote_value=1 %}">Like</a></button>
-    {% endif %}
+    <div>
+        <form action="{% url 'blog:likes' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" value="{{ post.id }}" name="post_id" class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+            Like</button> -{{ total_likes }} Likes
+                
 
-    {% if disliked %}
-    <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
-    <a   href="{% url 'blog:cast_vote' pk=post.pk vote_value=-1 %}">Disliked</a></button>
-    {% else %}
-     <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
-    <a   href="{% url 'blog:cast_vote' pk=post.pk vote_value=-1 %}">Dislike</a></button>
-    {% endif %}
-    <br/>
-    <button class="ml-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
-        <a href="{% url 'blog:home' %}">Back</a></button>
-    
+        </form>
+        <form action="{% url 'blog:dislikes' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" value="{{ post.id }}" name="post_id" class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+            Dislike</button> -{{ total_dislikes }} Dislikes
+                
 
+        </form>
+    </div>
+
+</div>
+   
+    
+    
     <hr>
     <br />
    

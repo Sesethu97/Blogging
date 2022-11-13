@@ -59,12 +59,13 @@ class PostPage(DetailView):
     def get_context_data(self, *args, **kwargs):
         category_menu = Category.objects.all()
         context = super(PostPage, self).get_context_data(*args, **kwargs)
+        posts_ = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = posts_.total_likes()
+        total_dislikes = posts_.total_dislikes()
         context["category_menu"] = category_menu
-
-        # vote = Vote.objects.get(user=self.request.user, post=Post.objects.get(id=47))
-
-        # context["liked"] = vote.value == 1
-        # context["disliked"] = vote.value == -1
+        context["total_likes"] = total_likes
+        context["total_dislikes"] = total_dislikes
+        
         return context
 
 
@@ -94,43 +95,15 @@ def create_post(request: HttpRequest):
     }
     return render(request, "blog/add_post.html", context)
 
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
 
-
-def user_cast_vote(request, pk, vote_value):
-    """
-    Creates new `Vote` object associated with request.user + `Link.objects.get(object_id=object_id)`
-    """
-    if not request.user.is_authenticated:
-        data = {
-            "status_code": 401,
-            "message": "You need be logged in to perform this action",
-        }
-        return HttpResponse(data)
-    else:
-        post = get_object_or_404(Post, pk=pk)
-
-        try:
-            vote_value = int(vote_value)
-        except:
-            vote_value = 0
-
-        has_user_voted = check_has_user_voted(Vote, request.user, post)
-
-        if has_user_voted == True:
-            vote = Vote.objects.get(user=request.user, post=post)
-            if vote.value == -1 or vote.value == 1:
-                cast_vote(post=post, vote_value=0, vote=vote)
-            elif vote.value == 0:
-                cast_vote(post=post, vote_value=vote_value, vote=vote)
-
-            return HttpResponse(
-                {"score": post.score, "has_voted": True, "value": vote.value}
-            )
-        elif has_user_voted == False:
-            vote = Vote.objects.create(user=request.user, post=post)
-            cast_vote(post=post, vote_value=vote_value, vote=vote)
-            return HttpResponse({"score": post.score, "has_voted": True})
-
+def DislikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.dislikes.add(request.user)
+    return HttpResponseRedirect(reverse('blog:post_details', args=[str(pk)]))
 
 class CreatePost(View):
     def post(self, request: HttpRequest):

@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     CreatePost,
+    DislikeView,
     HomePage,
     PostPage,
     UpdatePost,
@@ -9,8 +10,8 @@ from .views import (
     category_post,
     create_post,
     category_list,
-    user_cast_vote,
     base_home,
+    LikeView
     
 )
 
@@ -26,6 +27,8 @@ urlpatterns = [
     path("article/<int:pk>/delete", DeletePost.as_view(), name="delete_post"),
     path("category/<str:cats>", category_post, name="category_post"),
     path("category_list/", category_list, name="category_list"),
-    path("vote/<pk>/<vote_value>", user_cast_vote, name="cast_vote"),
+    path("likes/<int:pk>", LikeView, name="likes"),
+    path("dislikes/<int:pk>", DislikeView, name="dislikes"),
+
   
 ]

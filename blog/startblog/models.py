@@ -45,10 +45,14 @@ class Post(models.Model):
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default="uncategorized")
     
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
-    score = models.IntegerField(default=0)
- 
+    likes = models.ManyToManyField(User, related_name='like', default=None, blank=True)
+    dislikes = models.ManyToManyField(User, related_name='dislike', default=None, blank=True)
+
+    def total_likes(self):
+        return self.likes.count()
+
+    def total_dislikes(self):
+        return self.dislikes.count()
 
     def __str__(self):
         return self.title + " | " + str(self.author)
