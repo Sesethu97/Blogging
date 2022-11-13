@@ -61,10 +61,10 @@ class PostPage(DetailView):
         context = super(PostPage, self).get_context_data(*args, **kwargs)
         context["category_menu"] = category_menu
 
-        vote = Vote.objects.get(user=self.request.user, post=Post.objects.get(id=47))
+        # vote = Vote.objects.get(user=self.request.user, post=Post.objects.get(id=47))
 
-        context["liked"] = vote.value == 1
-        context["disliked"] = vote.value == -1
+        # context["liked"] = vote.value == 1
+        # context["disliked"] = vote.value == -1
         return context
 
 
