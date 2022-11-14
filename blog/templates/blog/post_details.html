@@ -29,7 +29,7 @@
     <div class="flex w-screen">
     <p class="break-normal">{{ post.body|safe }}</p>
     </div>
-    <div>
+    <div class="flex w-1/2 ">
         <form action="{% url 'blog:likes' post.pk %}" method="POST">
             {% csrf_token %}
             <button type="submit" value="{{ post.id }}" name="post_id" class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
@@ -37,14 +37,18 @@
                 
 
         </form>
-        <form action="{% url 'blog:dislikes' post.pk %}" method="POST">
+        <form class="ml-8" action="{% url 'blog:dislikes' post.pk %}" method="POST">
             {% csrf_token %}
             <button type="submit" value="{{ post.id }}" name="post_id" class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
             Dislike</button> -{{ total_dislikes }} Dislikes
                 
 
         </form>
+        
+
     </div>
+    <button type="button" class=" text-center mt-5 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"><a href="{% url 'blog:home' %}">Back</a></button>
+
 
 </div>
    

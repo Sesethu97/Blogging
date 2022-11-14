@@ -4,7 +4,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<h7 class="text-center ml-20  mt-20 text-black text-2xl font-extrabold	">Add Post</h7>
+<h7 class="text-center ml-20 mt-1   0 text-black text-2xl font-extrabold">Add Post</h7>
 
 <div class="ml-20 mr-20 mt-10 text-bold" >
     <form method="POST" enctype="multipart/form-data" class="text-bold">
@@ -12,9 +12,11 @@
         
         {{ form.media}}
         {{ form.as_p}}
-        <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+        <button class="mt-10 bg-black  mr-5 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
         Post
           </button>   
+          <button class="mt-10 bg-black hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"><a href="{% url 'blog:home' %}" >
+            Back </a> </button>   
     </form>
 </div>
 

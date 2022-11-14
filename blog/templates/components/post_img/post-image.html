@@ -1,19 +1,9 @@
 {% load humanize %}
 
-<style>
-    .card{
-        width:max-content;
-        height: 15em;
-    }
-    small{
-        position:relative; 
-        left:80px; 
-        top:2px;
-    }
-</style>
 
-<div class="card">
-    <div class="shadow-lg p-3 mb-5 bg-white rounded">    
+
+<div class="h-48 ">
+    <div class="shadow-lg  p-3 mb-5 bg-white rounded">    
     
         <a href="{% url 'blog:post_details' pk=post.pk %}">
         
@@ -24,7 +14,7 @@
                     <br/>{{ post.post_date}}</small>
 
             
-        <small>
+        
         </a>
 
         <p class="card-text"><small class="text-muted">{{post.post_time|naturaltime}}</small></p>

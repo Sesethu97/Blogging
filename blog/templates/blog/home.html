@@ -21,30 +21,22 @@
 
 
 
-<div class="postage">
-    <div class=" m-20 grid grid-cols-4 gap-4 auto-cols-min ">
+    <div class="ml-5 mr-5 mt-8 grid  grid-cols-4 gap-4">
         {% for post in object_list %}
 
         {% include 'components/post_img/post-image.html' %}
         
         {% endfor %}
     </div>
-</div>
 {% if request.user.is_authenticated %}
 
-<div class="floating-btn relative">
+<div class="floating-btn fixed ">
     {% if user.is_authenticated %}
     <a href="{% url 'blog:add_post' %}">
     
 
-    <button
-        class="p-0 w-20 h-20 absolute bottom-0 right-0 mr-20 bg-black rounded-full hover:bg-pink-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-         <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-7 inline-block">
-        <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
-                            C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
-                            C15.952,9,16,9.447,16,10z" />
-        </svg>
-    </button>
+        <button title="add_post"
+        class="fixed z-90 bottom-10 right-8 bg-black w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-pink-700 hover:drop-shadow-2xl hover:animate-bounce duration-300">&#43;</button>
     </a>
         {% endif %}
     </div>
@@ -64,4 +56,8 @@
     }, 3000);
 
 </script>
+
+</script>
+
 {% endblock %}
+
